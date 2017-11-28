@@ -32,7 +32,7 @@ public class GitLogin extends AppCompatActivity {
     @BindView(R.id.btn_login) Button webDialog;
     private WebView loginView;
 
-    // RegAPI directly from Dagger
+   // RegAPI directly from Dagger
     @Inject RegAPI api;
 
     LoadListener loadlistener = new LoadListener();
@@ -127,7 +127,7 @@ public class GitLogin extends AppCompatActivity {
 
         final AuthRequest auth = new AuthRequest(code, grant_type, client_id, client_secret, redirect_uri);
 
-    // generic type bisa bebas diisi denngan nama apa saja Call <AuthRequest> dll
+   // generic type bisa bebas diisi denngan nama apa saja Call <AuthRequest> dll
         Call<AuthRequest> call = api.setCode(auth);
 
         call.enqueue(new Callback<AuthRequest>() {

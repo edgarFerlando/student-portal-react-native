@@ -15,7 +15,7 @@ public class RefactoryApplication extends Application {
     private static Application instance;
     private ApplicationComponent applicationComponent;
 
-    public static RefactoryApplication get(Context context){
+    public static RefactoryApplication get(Context context) {
         return (RefactoryApplication) context.getApplicationContext();
     }
 

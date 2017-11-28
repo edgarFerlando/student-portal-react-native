@@ -22,7 +22,6 @@ import com.google.gson.GsonBuilder;
 @Module(includes = ApplicationModule.class)
 public class MainModule {
     public static final String BASE_URL = "https://api.refactory.id";
-//    private static Retrofit retrofit = null;
 
     @Provides @Singleton
     HttpLoggingInterceptor provideHttpLoggingInterceptor(){
@@ -51,16 +50,6 @@ public class MainModule {
                 .build();
         return builder.build();
     }
-
-//    @Provides @Singleton
-//    public Retrofit provideRetrofit(Gson gson) {
-//
-//        retrofit = new Retrofit.Builder()
-//                .baseUrl(BASE_URL)
-//                .addConverterFactory(GsonConverterFactory.create(gson))
-//                .build();
-//        return retrofit;
-//    }
 
     @Provides
     public RappClient provideRappClient(Retrofit retrofit) {
