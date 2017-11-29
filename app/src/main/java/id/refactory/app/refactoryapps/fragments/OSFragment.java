@@ -58,11 +58,6 @@ public class OSFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
 
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
-<<<<<<< 140a01e7c35519438f8aca14d9994f568e937a0b
-=======
-
-        RappClient apiService = retrofitConnect.create(RappClient.class);
->>>>>>> #16 change instansiation api/services/RetrofitConnect.java to use Dagger and delete it
 
         //Show Progress Bar
         progressBar.setVisibility(View.VISIBLE);
