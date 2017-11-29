@@ -57,11 +57,6 @@ public class OSFragment extends Fragment {
 
         //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
-<<<<<<< 140a01e7c35519438f8aca14d9994f568e937a0b
-=======
-
-        RappClient apiService = retrofitConnect.create(RappClient.class);
->>>>>>> #16 change instansiation api/services/RetrofitConnect.java to use Dagger and delete it
 
         String grabToken = ((Dashboard) getActivity()).GetToken();
 

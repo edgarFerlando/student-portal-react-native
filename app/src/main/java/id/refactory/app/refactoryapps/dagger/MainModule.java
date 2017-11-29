@@ -8,6 +8,8 @@ import id.refactory.app.refactoryapps.api.services.RappClient;
 import id.refactory.app.refactoryapps.api.services.RegAPI;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
+import id.refactory.app.refactoryapps.api.services.RappClient;
+import id.refactory.app.refactoryapps.api.services.RegAPI;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
