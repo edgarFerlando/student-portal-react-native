@@ -28,9 +28,9 @@
     <item android:title="Refactory Gate">
         <menu>
             <item
-                android:id="@+id/nav_login"
+                android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_lock_black_24dp"
-                android:title="Logout" />
+                android:title="Log out" />
         </menu>
     </item>
 </menu>
