@@ -60,30 +60,18 @@ public class GitLogin extends AppCompatActivity {
         String expired = user.get(SessionManager.EXPIRED);
         String times = user.get(SessionManager.TIME_NOW);
 
-        //getTime
-        SimpleDateFormat dfHours = new SimpleDateFormat("HH");
-        String hours = dfHours.format(currentTime.getTime());
-
-        SimpleDateFormat dfMinute = new SimpleDateFormat("mm");
-        String minute = dfMinute.format(currentTime.getTime());
-
-        SimpleDateFormat dfSecond = new SimpleDateFormat("ss");
-        String second = dfSecond.format(currentTime.getTime());
-
-        // convert to Integer
-        Integer cHours = Integer.parseInt(hours);
-        Integer cMinutes = Integer.parseInt(minute);
-        Integer cSeconds = Integer.parseInt(second);
         Integer tokenExpired = Integer.parseInt(expired);
         Integer timesExpired = Integer.parseInt(times);
 
-        Integer currentMilliseconds = (cHours*1000*60*60) + (cMinutes * 1000 * 60 ) + (cSeconds * 60);
-        Integer lastMilliseconds = timesExpired + tokenExpired;
+        Integer lastMilliSeconds = timesExpired + tokenExpired;
+
+        Log.d("date", "onCreate: " + timesExpired);
+        Log.d("date", "onCreate: " + timeNow());
 
         // Check token
         if (token != null) {
 
-            if (lastMilliseconds >= currentMilliseconds) {
+            if (lastMilliSeconds >= timeNow()) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
 
@@ -179,9 +167,9 @@ public class GitLogin extends AppCompatActivity {
         Integer cMinutes = Integer.parseInt(minute);
         Integer cSeconds = Integer.parseInt(second);
 
-        Integer timeMilliseconds = (cHours*1000*60*60) + (cMinutes * 1000 * 60 ) + (cSeconds * 60);
+        Integer timeMilliSeconds = (cHours*1000*60*60) + (cMinutes * 1000 * 60 ) + (cSeconds * 60);
 
-        return timeMilliseconds;
+        return timeMilliSeconds;
     }
 
     public void getToken(String codeGet){
