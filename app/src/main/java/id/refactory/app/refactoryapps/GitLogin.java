@@ -86,6 +86,7 @@ public class GitLogin extends AppCompatActivity {
             if (lastMilliseconds >= currentMilliseconds) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
+
             } else {
 
                 webDialog.setOnClickListener(new View.OnClickListener(){
@@ -154,7 +155,7 @@ public class GitLogin extends AppCompatActivity {
     }
 
     public void gitCode(String code){
-        Log.d("gitcode", code);
+
         String currentString = code;
         String[] codeSplit = currentString.split("=");
         String Code = codeSplit[1];
@@ -173,7 +174,7 @@ public class GitLogin extends AppCompatActivity {
         SimpleDateFormat dfSecond = new SimpleDateFormat("ss");
         String second = dfSecond.format(currentTime.getTime());
 
-        // confert to Integer
+        // convert to Integer
         Integer cHours = Integer.parseInt(hours);
         Integer cMinutes = Integer.parseInt(minute);
         Integer cSeconds = Integer.parseInt(second);
