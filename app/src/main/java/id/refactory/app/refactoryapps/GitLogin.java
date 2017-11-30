@@ -88,14 +88,24 @@ public class GitLogin extends AppCompatActivity {
                 startActivity(i);
             } else {
 
-                RefactoryApplication.get(this).getApplicationComponent().inject(this);
+                webDialog.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        dialogWebview();
+                    }
+                });
 
             }
         }else {
-
-            RefactoryApplication.get(this).getApplicationComponent().inject(this);
-
+            webDialog.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    dialogWebview();
+                }
+            });
         }
+
+        RefactoryApplication.get(this).getApplicationComponent().inject(this);
     }
 
     public void dialogWebview(){
