@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 import id.refactory.app.refactoryapps.Assignments;
 import id.refactory.app.refactoryapps.DetailAssignments;
+import id.refactory.app.refactoryapps.sessions.SessionManager;
 
 /**
  * Created by dhihan on 28/11/17.
@@ -15,6 +16,6 @@ import id.refactory.app.refactoryapps.DetailAssignments;
 
 public interface ApplicationComponent {
     void inject (Assignments assignments);
-    void inject(DetailAssignments detailAssignments);
+    void inject (DetailAssignments detailAssignments);
 
 }

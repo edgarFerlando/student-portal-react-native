@@ -12,6 +12,11 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.api.services.ApiClient;
@@ -41,6 +46,8 @@ public class GitLogin extends AppCompatActivity {
 
     SessionManager session;
 
+    Calendar currentTime = Calendar.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +55,59 @@ public class GitLogin extends AppCompatActivity {
         ButterKnife.bind(this);
 
         session = new SessionManager(getApplicationContext());
+        HashMap<String, String> user = session.getTokenDetails();
 
-        webDialog.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                dialogWebview();
+        String token = user.get(SessionManager.KEY_NAME);
+        String expired = user.get(SessionManager.EXPIRED);
+        String times = user.get(SessionManager.TIME_NOW);
+
+        //getTime
+        SimpleDateFormat dfHours = new SimpleDateFormat("HH");
+        String hours = dfHours.format(currentTime.getTime());
+
+        SimpleDateFormat dfMinute = new SimpleDateFormat("mm");
+        String minute = dfMinute.format(currentTime.getTime());
+
+        SimpleDateFormat dfSecond = new SimpleDateFormat("ss");
+        String second = dfSecond.format(currentTime.getTime());
+
+        // convert to Integer
+        Integer cHours = Integer.parseInt(hours);
+        Integer cMinutes = Integer.parseInt(minute);
+        Integer cSeconds = Integer.parseInt(second);
+        Integer tokenExpired = Integer.parseInt(expired);
+        Integer timesExpired = Integer.parseInt(times);
+
+        Integer currentMilliseconds = (cHours*1000*60*60) + (cMinutes * 1000 * 60 ) + (cSeconds * 60);
+        Integer lastMilliseconds = timesExpired + tokenExpired;
+
+        Log.d("Token", "onCreate: Waktu Sekarang "+currentMilliseconds);
+        Log.d("Token", "onCreate: Token Expired nya "+tokenExpired);
+        Log.d("Token", "onCreate: token Expired + waktu login "+lastMilliseconds);
+
+        // Check token
+        if (token != null){
+
+            if (lastMilliseconds >= currentMilliseconds) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }else {
+                webDialog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogWebview();
+                    }
+                });
             }
-        });
+
+        }else {
+            webDialog.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialogWebview();
+                }
+            });
+        }
     }
 
     public void dialogWebview(){
@@ -111,6 +164,27 @@ public class GitLogin extends AppCompatActivity {
         getToken(Code);
     }
 
+    public Integer timeNow(){
+        //get time for save to sharedPreference
+        SimpleDateFormat dfHours = new SimpleDateFormat("HH");
+        String hours = dfHours.format(currentTime.getTime());
+
+        SimpleDateFormat dfMinute = new SimpleDateFormat("mm");
+        String minute = dfMinute.format(currentTime.getTime());
+
+        SimpleDateFormat dfSecond = new SimpleDateFormat("ss");
+        String second = dfSecond.format(currentTime.getTime());
+
+        // confert to Integer
+        Integer cHours = Integer.parseInt(hours);
+        Integer cMinutes = Integer.parseInt(minute);
+        Integer cSeconds = Integer.parseInt(second);
+
+        Integer timeMilliseconds = (cHours*1000*60*60) + (cMinutes * 1000 * 60 ) + (cSeconds * 60);
+
+        return timeMilliseconds;
+    }
+
     public void getToken(String codeGet){
 
         ApiClient get = new ApiClient();
@@ -140,8 +214,7 @@ public class GitLogin extends AppCompatActivity {
                 String refreshToken = authRequest.body().getRefreshToken();
                 String tokenType = authRequest.body().getTokenType();
 
-                session.createLogin(accessToken,expiresToken,refreshToken,tokenType);
-
+                session.createLogin(accessToken,expiresToken,refreshToken,tokenType,timeNow());
                 MyDialog.dismiss();
 
                 // Intent Untuk masuk ke dashboard setalah login via github
