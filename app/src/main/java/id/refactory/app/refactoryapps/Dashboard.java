@@ -93,6 +93,7 @@ public class Dashboard extends AppCompatActivity implements HomeFragment.OnFragm
     public void onBackPressed(){
         Intent view = new Intent(getApplication(),MainActivity.class);
         startActivity(view);
+        finish();
     }
 
 }

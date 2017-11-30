@@ -11,19 +11,22 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
+import id.refactory.app.refactoryapps.RefactoryApplication;
 import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
-import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
 import id.refactory.app.refactoryapps.adapter.dashboard.WPMAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * Created by prana on 04/10/17.
@@ -37,6 +40,8 @@ public class WPMFragment extends Fragment {
     //================================================================
     @BindView(R.id.listWPM) RecyclerView recyclerView;
     private Unbinder unbinder;
+
+    @Inject RappClient apiService;
 
     public WPMFragment() {
         // Required empty public constructor
@@ -52,7 +57,8 @@ public class WPMFragment extends Fragment {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
-        RappClient apiService = RetrofitConnect.getClient().create(RappClient.class);
+        //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
+        RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
 
         String grabToken = ((Dashboard) getActivity()).GetToken();
 
