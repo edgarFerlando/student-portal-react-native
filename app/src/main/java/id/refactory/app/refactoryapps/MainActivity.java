@@ -14,12 +14,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.fragments.OverviewFragment;
+import id.refactory.app.refactoryapps.sessions.SessionManager;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         OverviewFragment.OnFragmentInteractionListener {
@@ -30,9 +35,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        sessionManager.checkLogin();
+
         setContentView(R.layout.activity_main);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
+
+
+        // set session
+        SessionManager session = new SessionManager(getApplicationContext());
+
+        //get user data from session
+        HashMap<String, String> user = session.getTokenDetails();
+        // toast awareness user login
+        Toast.makeText(getApplicationContext(),"User Login Status : "+ session.loggedIn()+" ", Toast.LENGTH_SHORT).show();
+        session.checkLogin();
 
         //Set DrawerLayout
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -95,16 +114,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent i = new Intent(getApplicationContext(), Assignments.class);
             startActivity(i);
             finish();
-        }
-        else if (id == R.id.nav_login) {
+        }/* else if (id == R.id.nav_login) {
             Intent i = new Intent(getApplicationContext(), GitLogin.class);
             startActivity(i);
+            finish();*/
+         else if (id == R.id.nav_logout){
+            Intent i = new Intent (getApplicationContext(),GitLogin.class);
+            startActivity(i);
             finish();
-        }
+            deleteAppData();
+         }
 
 //        try {
 //            fragment = (Fragment) fragmentClass.newInstance();
-//        } catch (Exception e) {
+//        } catch (Exception e)
 //            e.printStackTrace();
 //        }
 //        FragmentManager fragmentManager = getSupportFragmentManager();
@@ -112,6 +135,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    // for clearing apps data programatically
+    private void deleteAppData() {
+        try {
+            // clearing app data
+            String packageName = getApplicationContext().getPackageName();
+            Runtime runtime = Runtime.getRuntime();
+            runtime.exec("pm clear "+packageName);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
