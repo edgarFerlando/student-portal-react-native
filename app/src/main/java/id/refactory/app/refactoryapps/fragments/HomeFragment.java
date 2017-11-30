@@ -11,19 +11,22 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import id.refactory.app.refactoryapps.Dashboard;
 import id.refactory.app.refactoryapps.R;
+import id.refactory.app.refactoryapps.RefactoryApplication;
 import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.api.models.RappMod;
 import id.refactory.app.refactoryapps.api.services.RappClient;
-import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
 import id.refactory.app.refactoryapps.adapter.dashboard.RappAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
 public class HomeFragment extends Fragment {
@@ -32,6 +35,8 @@ public class HomeFragment extends Fragment {
 
     private ArrayList<DataAssignment> mDatalist;
     private RappAdapter mDataAdapter;
+
+    @Inject RappClient apiService;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -52,9 +57,8 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
-        // connection api menggunakan Retrofit
-
-        RappClient apiService = RetrofitConnect.getClient().create(RappClient.class);
+        //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
+        RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
 
 //        //Objek Dashboard untuk panggil token dari objek dashboard
 //        Dashboard dashboard = new Dashboard();

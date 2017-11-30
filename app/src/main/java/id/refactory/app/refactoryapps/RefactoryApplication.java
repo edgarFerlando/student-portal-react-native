@@ -3,11 +3,9 @@ package id.refactory.app.refactoryapps;
 import android.app.Application;
 import android.content.Context;
 
-import dagger.android.DaggerApplication;
 import id.refactory.app.refactoryapps.dagger.ApplicationComponent;
 import id.refactory.app.refactoryapps.dagger.ApplicationModule;
 import id.refactory.app.refactoryapps.dagger.DaggerApplicationComponent;
-import id.refactory.app.refactoryapps.dagger.MainModule;
 
 /**
  * Created by dhihan on 28/11/17.
@@ -24,13 +22,13 @@ public class RefactoryApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if(instance==null)
-            instance=this;
+
+        if (instance == null)
+            instance = this;
         this.initAppComponent();
     }
 
-    private void initAppComponent()
-    {
+    private void initAppComponent() {
         this.applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(instance))
                 .build();
@@ -39,4 +37,5 @@ public class RefactoryApplication extends Application {
     public ApplicationComponent getApplicationComponent() {
         return this.applicationComponent;
     }
+
 }

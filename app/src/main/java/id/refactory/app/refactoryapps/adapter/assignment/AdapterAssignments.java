@@ -22,7 +22,7 @@ import id.refactory.app.refactoryapps.DetailAssignments;
 public class AdapterAssignments extends RecyclerView.Adapter<AdapterAssignments.MyViewHolder> {
     private List<DataAssignments> assignments;
 
-
+    @BindView(R.id.tv_status) TextView textView;
 
     public AdapterAssignments(List<DataAssignments> assignments){
         this.assignments = assignments;
@@ -59,7 +59,6 @@ public class AdapterAssignments extends RecyclerView.Adapter<AdapterAssignments.
         holder.tv_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {;
-                TextView textview = (TextView) view.findViewById(R.id.tv_status);
                 Intent intent = new Intent(view.getContext(), DetailAssignments.class);
 
                 intent.putExtra("status",assign);

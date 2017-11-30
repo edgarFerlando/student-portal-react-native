@@ -13,21 +13,19 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.api.services.ApiClient;
 import id.refactory.app.refactoryapps.api.services.AuthRequest;
 import id.refactory.app.refactoryapps.api.services.RegAPI;
-import id.refactory.app.refactoryapps.api.services.RetrofitConnect;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-import static id.refactory.app.refactoryapps.api.services.RetrofitConnect.*;
 
 public class GitLogin extends AppCompatActivity {
 
@@ -36,10 +34,13 @@ public class GitLogin extends AppCompatActivity {
     @BindView(R.id.btn_login) Button webDialog;
     private WebView loginView;
 
-    LoadListener loadlistener = new LoadListener();
-    ApiClient api = new ApiClient();
+    // RegAPI directly from Dagger
+    @Inject RegAPI api;
 
-    String url = api.getUri();
+    LoadListener loadlistener = new LoadListener();
+
+    ApiClient apiClient = new ApiClient();
+    String url = apiClient.getUri();
 
     SessionManager session;
 
@@ -57,6 +58,8 @@ public class GitLogin extends AppCompatActivity {
                 dialogWebview();
             }
         });
+
+        RefactoryApplication.get(this).getApplicationComponent().inject(this);
     }
 
     public void dialogWebview(){
@@ -115,21 +118,17 @@ public class GitLogin extends AppCompatActivity {
 
     public void getToken(String codeGet){
 
-        ApiClient get = new ApiClient();
         String code = codeGet;
 
-        ApiClient apiClient = new ApiClient();
-        String URL = apiClient.getURL();
+//        ApiClient apiClient = new ApiClient();
+//        String URL = apiClient.getURL();
         String grant_type = apiClient.getGrantType();
         String client_id = apiClient.getClient_id();
         String client_secret = apiClient.getClientSecret();
         final String redirect_uri = apiClient.redirectUri();
 
-        RetrofitConnect retrofitConnect = new RetrofitConnect();
-
         final AuthRequest auth = new AuthRequest(code, grant_type, client_id, client_secret, redirect_uri);
 
-        RegAPI api = retrofitConnect.getClient().create(RegAPI.class);
     // generic type bisa bebas diisi denngan nama apa saja Call <AuthRequest> dll
         Call<AuthRequest> call = api.setCode(auth);
 
