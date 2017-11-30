@@ -2,6 +2,7 @@ package id.refactory.app.refactoryapps;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static id.refactory.app.refactoryapps.api.services.RetrofitConnect.*;
 
 public class GitLogin extends AppCompatActivity {
+
 
     private Dialog MyDialog;
     @BindView(R.id.btn_login) Button webDialog;
