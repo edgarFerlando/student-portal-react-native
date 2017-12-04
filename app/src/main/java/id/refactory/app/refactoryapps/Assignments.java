@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
