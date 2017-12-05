@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ import retrofit2.Retrofit;
 
 public class HRFragment extends Fragment {
     @BindView(R.id.listHR) RecyclerView recyclerView;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
     private Unbinder unbinder;
     // Prana 12 Okt 2017 ini untuk looping data dari DataAssignment.class
     private ArrayList<DataAssignment> mDatalist;
@@ -57,6 +59,11 @@ public class HRFragment extends Fragment {
 //
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
+
+        // Show progress bar
+        progressBar.setVisibility(View.VISIBLE);
+//
+//// connection api menggunakan Retrofit
 
         //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
@@ -90,6 +97,8 @@ public class HRFragment extends Fragment {
                 // //mDataAdapter= new HRAdapter(getActivity(), mDatalist); // Diclose karena mDatalist diganti result
                 if(recyclerView != null){
                     recyclerView.setAdapter(mDataAdapter);
+                    //Hide Progress Bar
+                    progressBar.setVisibility(View.GONE);
                 }
                 //Log.e("****",""+ rappMod.getData());g
             }

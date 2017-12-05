@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ import retrofit2.Retrofit;
 
 public class OSFragment extends Fragment {
     @BindView(R.id.listOS) RecyclerView recyclerView;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
     private Unbinder unbinder;
     //================================================================
     private ArrayList<DataAssignment> mDatalist;
@@ -55,8 +57,10 @@ public class OSFragment extends Fragment {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
 
-        //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
+
+        //Show Progress Bar
+        progressBar.setVisibility(View.VISIBLE);
 
         String grabToken = ((Dashboard) getActivity()).GetToken();
 
@@ -83,6 +87,8 @@ public class OSFragment extends Fragment {
                 //mDataAdapter= new OSAdapter(getActivity(), mDatalist); // Diclose karena mDatalist diganti result
                 if (recyclerView != null) {
                     recyclerView.setAdapter(mDataAdapter);
+                    //Hide Progress Bar
+                    progressBar.setVisibility(View.GONE);
                 }
                 //Log.e("****",""+ rappMod.getData());g
             }
