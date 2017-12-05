@@ -159,7 +159,7 @@ public class Assignments extends AppCompatActivity implements NavigationView.OnN
             startActivity(i);
             finish();
         }
-        else if (id == R.id.nav_login) {
+        else if (id == R.id.nav_logout) {
             Intent i = new Intent(getApplicationContext(), GitLogin.class);
             startActivity(i);
             finish();

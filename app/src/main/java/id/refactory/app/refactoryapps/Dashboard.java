@@ -128,7 +128,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             startActivity(i);
             finish();
         }
-        else if (id == R.id.nav_login) {
+        else if (id == R.id.nav_logout) {
             Intent i = new Intent(getApplicationContext(), GitLogin.class);
             startActivity(i);
             finish();
