@@ -69,7 +69,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            super.onBackPressed();{
+                    Intent view = new Intent(getApplication(),MainActivity.class);
+                    startActivity(view);
+                    finish();
+            }
         }
     }
 
