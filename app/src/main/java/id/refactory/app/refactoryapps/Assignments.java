@@ -9,6 +9,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +35,7 @@ public class Assignments extends AppCompatActivity{
     @Inject Retrofit retrofit;
 
     @BindView(R.id.assignment_numbers) RecyclerView recyclerView;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
     private AdapterAssignments mAdapter;
     List<DataAssignments> assignments;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -45,6 +48,8 @@ public class Assignments extends AppCompatActivity{
         setContentView(R.layout.activity_assignments);
         ButterKnife.bind(this);
         RefactoryApplication.get(this).getApplicationComponent().inject(this);
+        //Show Progress Bar
+        progressBar.setVisibility(View.VISIBLE);
         initViews();
         //RefactoryApplication.get(this).getApplicationComponent().inject(this);
     }
@@ -94,6 +99,8 @@ public class Assignments extends AppCompatActivity{
                     mLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(mLayoutManager);
                     recyclerView.setItemAnimator(new DefaultItemAnimator());
+                    //Hide Progress Bar
+                    progressBar.setVisibility(View.GONE);
                     recyclerView.setAdapter(mAdapter);
 
                 }

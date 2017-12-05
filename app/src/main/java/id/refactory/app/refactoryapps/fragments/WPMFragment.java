@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,7 @@ public class WPMFragment extends Fragment {
     private WPMAdapter mDataAdapter;
     //================================================================
     @BindView(R.id.listWPM) RecyclerView recyclerView;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
     private Unbinder unbinder;
 
     @Inject RappClient apiService;
@@ -59,6 +61,9 @@ public class WPMFragment extends Fragment {
 
         //Untuk menghubungkan dengan .RefactoryApplication agar inject mendapatkan data dari dagger.
         RefactoryApplication.get(this.getContext()).getApplicationComponent().inject(this);
+
+        //Show Progress Bar
+        progressBar.setVisibility(View.VISIBLE);
 
         String grabToken = ((Dashboard) getActivity()).GetToken();
 
@@ -85,6 +90,8 @@ public class WPMFragment extends Fragment {
                 //mDataAdapter= new WPMAdapter(getActivity(), mDatalist); // Diclose karena mDatalist diganti result
                 if (recyclerView != null) {
                     recyclerView.setAdapter(mDataAdapter);
+                    //Hide Progress Bar
+                    progressBar.setVisibility(View.GONE);
                 }
                 //Log.e("****",""+ rappMod.getData());g
             }
