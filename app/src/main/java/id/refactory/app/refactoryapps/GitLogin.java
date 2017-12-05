@@ -3,14 +3,22 @@ package id.refactory.app.refactoryapps;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
+import android.support.annotation.DrawableRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import javax.inject.Inject;
 
@@ -32,7 +40,7 @@ public class GitLogin extends AppCompatActivity {
     @BindView(R.id.btn_login) Button webDialog;
     private WebView loginView;
 
-    // RegAPI directly from Dagger
+   // RegAPI directly from Dagger
     @Inject RegAPI api;
 
     LoadListener loadlistener = new LoadListener();
@@ -61,7 +69,9 @@ public class GitLogin extends AppCompatActivity {
     }
 
     public void dialogWebview(){
+        setContentView(R.layout.activity_webview);
         loginView = new WebView(this);
+        loginView.getSettings().setUseWideViewPort(true);
         loginView.getSettings().setJavaScriptEnabled(true);
         loginView.getSettings().setDomStorageEnabled(true);
         loginView.getSettings().setDatabaseEnabled(true);
@@ -84,12 +94,14 @@ public class GitLogin extends AppCompatActivity {
 
             @Override
             public void onPageStarted(WebView view, String Url, Bitmap favicon){
-
+                view.setVisibility(View.GONE);
+                MyDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
             }
 
             public void onPageFinished(WebView view, String Url){
+                MyDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                view.setVisibility(View.VISIBLE);
                 view.loadUrl("javascript:window.HTMLOUT.processHTML('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
-
             }
 
         });
@@ -101,6 +113,9 @@ public class GitLogin extends AppCompatActivity {
         this.MyDialog.requestWindowFeature(Window.FEATURE_NO_TITLE );
         this.MyDialog.setContentView(loginView);
         this.MyDialog.setTitle("Login With Github");
+        this.MyDialog.setCanceledOnTouchOutside(false);
+        this.MyDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        this.MyDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
         this.MyDialog.show();
 
     }
@@ -127,7 +142,7 @@ public class GitLogin extends AppCompatActivity {
 
         final AuthRequest auth = new AuthRequest(code, grant_type, client_id, client_secret, redirect_uri);
 
-    // generic type bisa bebas diisi denngan nama apa saja Call <AuthRequest> dll
+   // generic type bisa bebas diisi denngan nama apa saja Call <AuthRequest> dll
         Call<AuthRequest> call = api.setCode(auth);
 
         call.enqueue(new Callback<AuthRequest>() {
@@ -171,4 +186,6 @@ public class GitLogin extends AppCompatActivity {
     }
 
 }
+
+
 
