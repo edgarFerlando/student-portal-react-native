@@ -20,6 +20,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -50,6 +53,8 @@ public class GitLogin extends AppCompatActivity {
 
     SessionManager session;
 
+    Calendar currentTime = Calendar.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,13 +62,45 @@ public class GitLogin extends AppCompatActivity {
         ButterKnife.bind(this);
 
         session = new SessionManager(getApplicationContext());
+        HashMap<String, String> user = session.getTokenDetails();
 
-        webDialog.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                dialogWebview();
+        String token = user.get(SessionManager.KEY_NAME);
+        String expired = user.get(SessionManager.EXPIRED);
+        String times = user.get(SessionManager.TIME_NOW);
+
+        Integer tokenExpired = Integer.parseInt(expired);
+        Integer timesExpired = Integer.parseInt(times);
+
+        Integer lastMilliSeconds = timesExpired + tokenExpired;
+
+        Log.d("date", "onCreate: " + timesExpired);
+        Log.d("date", "onCreate: " + timeNow());
+
+        // Check token
+        if (token != null) {
+
+            if (lastMilliSeconds >= timeNow()) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+
+            } else {
+
+                webDialog.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v){
+                        dialogWebview();
+                    }
+                });
+
             }
-        });
+        }else {
+            webDialog.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    dialogWebview();
+                }
+            });
+        }
 
         RefactoryApplication.get(this).getApplicationComponent().inject(this);
     }
@@ -121,12 +158,33 @@ public class GitLogin extends AppCompatActivity {
     }
 
     public void gitCode(String code){
-        Log.d("gitcode", code);
+
         String currentString = code;
         String[] codeSplit = currentString.split("=");
         String Code = codeSplit[1];
 
         getToken(Code);
+    }
+
+    public Integer timeNow(){
+        //get time for save to sharedPreference
+        SimpleDateFormat dfHours = new SimpleDateFormat("HH");
+        String hours = dfHours.format(currentTime.getTime());
+
+        SimpleDateFormat dfMinute = new SimpleDateFormat("mm");
+        String minute = dfMinute.format(currentTime.getTime());
+
+        SimpleDateFormat dfSecond = new SimpleDateFormat("ss");
+        String second = dfSecond.format(currentTime.getTime());
+
+        // convert to Integer
+        Integer cHours = Integer.parseInt(hours);
+        Integer cMinutes = Integer.parseInt(minute);
+        Integer cSeconds = Integer.parseInt(second);
+
+        Integer timeMilliSeconds = (cHours*1000*60*60) + (cMinutes * 1000 * 60 ) + (cSeconds * 60);
+
+        return timeMilliSeconds;
     }
 
     public void getToken(String codeGet){
@@ -154,8 +212,7 @@ public class GitLogin extends AppCompatActivity {
                 String refreshToken = authRequest.body().getRefreshToken();
                 String tokenType = authRequest.body().getTokenType();
 
-                session.createLogin(accessToken,expiresToken,refreshToken,tokenType);
-
+                session.createLogin(accessToken,expiresToken,refreshToken,tokenType,timeNow());
                 MyDialog.dismiss();
 
                 // Intent Untuk masuk ke dashboard setalah login via github
