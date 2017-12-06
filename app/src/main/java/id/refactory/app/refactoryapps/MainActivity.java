@@ -2,6 +2,8 @@ package id.refactory.app.refactoryapps;
 
 //import android.app.Fragment;
 //import android.support.v4.app.FragmentManager;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,7 +17,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -113,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 //        Fragment fragment = null;
 //        Class fragmentClass = null;
-
         if (id == R.id.nav_overview) {
 //            // Handle the fragment action
 //            fragmentClass = OverviewFragment.class;
@@ -164,6 +165,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             dialog.show();
         }
+
 
 //        try {
 //            fragment = (Fragment) fragmentClass.newInstance();
