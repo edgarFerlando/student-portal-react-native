@@ -21,9 +21,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import java.util.HashMap;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import id.refactory.app.refactoryapps.fragments.FeedbackDialog;
 import id.refactory.app.refactoryapps.fragments.OverviewFragment;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 
@@ -131,30 +135,52 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             finish();
             deleteAppData();
         }
-//          else if (id == R.id.nav_codeofconduct) {
-//            DisplayMetrics displayMetrics = new DisplayMetrics();
-//            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-//            int height = displayMetrics.heightPixels;
-//
-//            final BottomSheetDialog dialog = new BottomSheetDialog(this);
-//            View view = getLayoutInflater().inflate(R.layout.fragment_code_of_conduct, null);
-//
-//            TextView titleBar = view.findViewById(R.id.titleBar);
-//            titleBar.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    dialog.dismiss();
-//                }
-//            });
-//
-//            dialog.setContentView(view);
-//            BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(((View) view.getParent()));
-//            bottomSheetBehavior.setHideable(false);
-//            bottomSheetBehavior.setPeekHeight(height);
-//
-//            dialog.show();
-//        }
-////>>>>>>> e58f30b65be34c0b98196889a376231dc32e3168
+        else if (id == R.id.nav_feedback) {
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int displayHeight = displayMetrics.heightPixels;
+
+            final BottomSheetDialog bottomSheetDialog = new FeedbackDialog(this);
+            View view = getLayoutInflater().inflate(R.layout.fragment_feedback_dialog, null);
+
+            TextView titleBar = view.findViewById(R.id.feedback_title_bar);
+            titleBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    bottomSheetDialog.dismiss();
+                }
+            });
+
+            bottomSheetDialog.setContentView(view);
+            BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from((View) view.getParent());
+            bottomSheetBehavior.setHideable(false);
+            bottomSheetBehavior.setPeekHeight(displayHeight);
+
+            bottomSheetDialog.show();
+        }
+        else if (id == R.id.nav_codeofconduct) {
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int height = displayMetrics.heightPixels;
+
+            final BottomSheetDialog dialog = new BottomSheetDialog(this);
+            View view = getLayoutInflater().inflate(R.layout.fragment_code_of_conduct, null);
+
+            TextView titleBar = view.findViewById(R.id.titleBar);
+            titleBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.setContentView(view);
+            BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(((View) view.getParent()));
+            bottomSheetBehavior.setHideable(false);
+            bottomSheetBehavior.setPeekHeight(height);
+
+            dialog.show();
+        }
 
 //        try {
 //            fragment = (Fragment) fragmentClass.newInstance();
