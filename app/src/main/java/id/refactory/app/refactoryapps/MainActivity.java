@@ -2,20 +2,25 @@ package id.refactory.app.refactoryapps;
 
 //import android.app.Fragment;
 //import android.support.v4.app.FragmentManager;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.content.Intent;
-
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +37,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setSupportActionBar(toolbar);
+
         ButterKnife.bind(this);
+
 
         //Set DrawerLayout
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -41,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
-
     }
 
 
@@ -100,6 +106,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent i = new Intent(getApplicationContext(), GitLogin.class);
             startActivity(i);
             finish();
+        }
+        else if(id == R.id.nav_codeofconduct) {
+            DisplayMetrics displayMetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+            int height = displayMetrics.heightPixels;
+
+            final BottomSheetDialog dialog = new BottomSheetDialog(this);
+            View view = getLayoutInflater().inflate(R.layout.fragment_code_of_conduct, null);
+
+            TextView titleBar = view.findViewById(R.id.titleBar);
+            titleBar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+
+            dialog.setContentView(view);
+            BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(((View) view.getParent()));
+            bottomSheetBehavior.setHideable(false);
+            bottomSheetBehavior.setPeekHeight(height);
+
+            dialog.show();
         }
 
 //        try {
