@@ -34,6 +34,10 @@
     <string name="action_settings">Settings</string>
     <string name="dashboard">Dashboard</string>
     <string name="assignments">Assignments</string>
+    <string name="feedback_title">Your Feedback to us</string>
+    <string name="feedback_msg">With this form you can send Your Feedback, Comment, or Feeling when you be part of Refactory family.</string>
+    <string name="feedback_anonymous">Send as Anonymous</string>
+    <string name="submit_msg">Submit</string>
 
 
 </resources>

@@ -28,6 +28,10 @@
     <item android:title="Refactory Gate">
         <menu>
             <item
+                android:id="@+id/nav_feedback"
+                android:icon="@drawable/ic_refactory_feedback"
+                android:title="Feedback" />
+            <item
                 android:id="@+id/nav_login"
                 android:icon="@drawable/ic_lock_black_24dp"
                 android:title="Logout" />
