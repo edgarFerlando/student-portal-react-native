@@ -13,24 +13,30 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_overview"
-            android:icon="@drawable/ic_overview_black_24dp"
+            android:icon="@drawable/ic_refactory_overview"
             android:title="Overview" />
         <item
             android:id="@+id/nav_dashboard"
-            android:icon="@drawable/ic_dashboard_black_24dp"
+            android:icon="@drawable/ic_refactory_dashboard"
             android:title="Dashboard" />
         <item
             android:id="@+id/nav_assignment"
-            android:icon="@drawable/ic_assignment_black_24dp"
+            android:icon="@drawable/ic_refactory_assignment"
             android:title="Assignment" />
     </group>
 
     <item android:title="Refactory Gate">
         <menu>
             <item
+                android:id="@+id/nav_codeofconduct"
+                android:icon="@drawable/ic_refactory_code_of_conduct"
+                android:title="Code of Conduct" />
+
+            <item
                 android:id="@+id/nav_logOut"
                 android:icon="@drawable/ic_lock_black_24dp"
                 android:title="Log out" />
+
         </menu>
     </item>
 </menu>
