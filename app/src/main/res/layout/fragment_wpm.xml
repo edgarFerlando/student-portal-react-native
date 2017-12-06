@@ -5,14 +5,6 @@
     android:layout_height="match_parent"
     tools:context="id.refactory.app.refactoryapps.fragments.WPMFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tab WPM"
-        android:textAllCaps="true"
-        android:textSize="40dp"
-        android:gravity="center"
-        android:id="@+id/titletabWPM"/>
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -25,6 +17,6 @@
         android:id="@+id/listWPM"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/titletabWPM"/>
+        />
 
 </RelativeLayout>
