@@ -2,8 +2,6 @@ package id.refactory.app.refactoryapps;
 
 //import android.app.Fragment;
 //import android.support.v4.app.FragmentManager;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 
 import android.net.Uri;
@@ -14,7 +12,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -101,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+git     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 //        Fragment fragment = null;
@@ -122,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent i = new Intent(getApplicationContext(), GitLogin.class);
             startActivity(i);
             finish();*/
-         else if (id == R.id.nav_logout){
+         else if (id == R.id.nav_logOut){
             Intent i = new Intent (getApplicationContext(),GitLogin.class);
             startActivity(i);
             finish();
