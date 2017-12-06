@@ -107,27 +107,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             finish();
         }
         else if (id == R.id.nav_feedback) {
-            DisplayMetrics displayMetrics = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-            int displayHeight = displayMetrics.heightPixels;
 
             final BottomSheetDialog bottomSheetDialog = new FeedbackDialog(this);
-            View view = getLayoutInflater().inflate(R.layout.fragment_feedback_dialog, null);
-
-            TextView titleBar = view.findViewById(R.id.feedback_title_bar);
-            titleBar.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    bottomSheetDialog.dismiss();
-                }
-            });
-
-            bottomSheetDialog.setContentView(view);
-            BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from((View) view.getParent());
-            bottomSheetBehavior.setHideable(false);
-            bottomSheetBehavior.setPeekHeight(displayHeight);
-
             bottomSheetDialog.show();
+
         }
         else if(id == R.id.nav_codeofconduct) {
             DisplayMetrics displayMetrics = new DisplayMetrics();
