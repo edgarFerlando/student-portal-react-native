@@ -15,26 +15,17 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-// <<<<<<< HEAD ini kepake bro
 import android.widget.Toast;
 
 import java.util.HashMap;
-//======= punya mu kepake juga bro
-import android.view.View;
-import android.widget.TextView;
-
-//import org.w3c.dom.Text;
-//>>>>>>> e58f30b65be34c0b98196889a376231dc32e3168
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.fragments.OverviewFragment;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
-import retrofit2.http.HEAD;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         OverviewFragment.OnFragmentInteractionListener {
@@ -63,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //get user data from session
         HashMap<String, String> user = session.getTokenDetails();
         // toast awareness user login
-        Toast.makeText(getApplicationContext(), "User Login Status : " + session.loggedIn() + " ", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"User Login Status : "+ session.loggedIn()+" ", Toast.LENGTH_SHORT).show();
         session.checkLogin();
 
         //Set DrawerLayout
@@ -81,11 +72,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
-            {
-                Intent view = new Intent(getApplication(), MainActivity.class);
-                startActivity(view);
-                finish();
+            super.onBackPressed();{
+                    Intent view = new Intent(getApplication(),MainActivity.class);
+                    startActivity(view);
+                    finish();
             }
         }
     }
@@ -134,8 +124,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }/* else if (id == R.id.nav_login) {
             Intent i = new Intent(getApplicationContext(), GitLogin.class);
             startActivity(i);
-            finish();*/ else if (id == R.id.nav_logOut) {
-            Intent i = new Intent(getApplicationContext(), GitLogin.class);
+            finish();*/
+         else if (id == R.id.nav_logOut){
+            Intent i = new Intent (getApplicationContext(),GitLogin.class);
             startActivity(i);
             finish();
             deleteAppData();
@@ -175,9 +166,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
+        }
 
-    // for clearing apps data programatically
+    // for clearing apps data programmatically
     private void deleteAppData() {
         try {
             // clearing app data
