@@ -27,7 +27,6 @@ import id.refactory.app.refactoryapps.api.services.RappClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 /**
  * Created by prana on 04/10/17.
