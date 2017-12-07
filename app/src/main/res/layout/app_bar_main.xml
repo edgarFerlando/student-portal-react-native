@@ -20,14 +20,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="?attr/colorPrimaryDark"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                android:text="">
 
                 <ImageView
+                    android:id="@+id/icon_toolbar"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/ic_refactory" />
+                    android:layout_gravity="right"
+                    app:srcCompat="@mipmap/refactory" />
             </android.support.v7.widget.Toolbar>
+
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/toolbarAssignment"-->
+                <!--android:background="?attr/colorPrimaryDark"-->
+                <!--app:popupTheme="@style/AppTheme.PopupOverlay"-->
+                <!--android:text="">-->
+
+                <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="150dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="40dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+                    <!--&lt;!&ndash;app:srcCompat="@drawable/ic_refactory" />&ndash;&gt;-->
+            <!--</android.support.v7.widget.Toolbar>-->
 
         </android.support.design.widget.AppBarLayout>
 
