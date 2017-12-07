@@ -21,6 +21,8 @@ public class MainActivity extends BaseActivity implements OverviewFragment.OnFra
         return R.layout.activity_main;
     }
 
+    SessionManager session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +46,8 @@ public class MainActivity extends BaseActivity implements OverviewFragment.OnFra
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();{
-                    Intent view = new Intent(getApplication(),MainActivity.class);
-                    startActivity(view);
+                    //Intent view = new Intent(getApplication(),MainActivity.class);
+                    //startActivity(view);
                     finish();
             }
         }
@@ -72,7 +74,7 @@ public class MainActivity extends BaseActivity implements OverviewFragment.OnFra
 
         return super.onOptionsItemSelected(item);
     }
-
+    
     @Override
     public void onFragmentInteraction(Uri uri) {
     }
