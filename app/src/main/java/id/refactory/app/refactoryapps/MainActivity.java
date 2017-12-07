@@ -2,6 +2,8 @@ package id.refactory.app.refactoryapps;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,9 +12,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -21,6 +26,7 @@ import java.util.List;
 import id.refactory.app.refactoryapps.api.models.DataAssignment;
 import id.refactory.app.refactoryapps.fragments.AssignmentFragment;
 import id.refactory.app.refactoryapps.fragments.DashboardFragment;
+import id.refactory.app.refactoryapps.fragments.FeedbackDialog;
 import id.refactory.app.refactoryapps.fragments.OverviewFragment;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 
@@ -123,6 +129,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                break;
                 fragment = new AssignmentFragment();
                 // fragment = new DetailAssignmentFragment(); //--> Todo : Still Working on Passing Data Fragment to Fragment through Activity. #Prana, Des-06-2017.
+                break;
+            case R.id.nav_feedback:
+                final BottomSheetDialog bottomSheetDialog = new FeedbackDialog(this);
+                bottomSheetDialog.show();
+                break;
+            case R.id.nav_codeofconduct:
+                DisplayMetrics displayMetrics = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                int height = displayMetrics.heightPixels;
+
+                final BottomSheetDialog dialog = new BottomSheetDialog(this);
+                View view = getLayoutInflater().inflate(R.layout.fragment_code_of_conduct, null);
+
+                TextView titleBar = view.findViewById(R.id.titleBar);
+                titleBar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.setContentView(view);
+                BottomSheetBehavior bottomSheetBehavior = BottomSheetBehavior.from(((View) view.getParent()));
+                bottomSheetBehavior.setHideable(false);
+                bottomSheetBehavior.setPeekHeight(height);
+
+                dialog.show();;
                 break;
             case R.id.nav_logOut:
                 i = new Intent(getApplicationContext(), GitLogin.class);
