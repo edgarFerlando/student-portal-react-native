@@ -46,11 +46,11 @@ public class DashboardFragment extends Fragment implements HomeFragment.OnFragme
         unbinder = ButterKnife.bind(this, view);
         getActivity().setTitle("Dashboard");
 
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_projects));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_wpm));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_hr));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_sof));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_os));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_project));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_wpm));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_hackerrank));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_sof));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_os));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         // tabLayout has been binded using Butter Knife
