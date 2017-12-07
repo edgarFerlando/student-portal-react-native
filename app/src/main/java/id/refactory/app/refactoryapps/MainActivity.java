@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        Fragment fragment = null;
 //        Class fragmentClass = null;
         if (id == R.id.nav_overview) {
+
 //            // Handle the fragment action
 //            fragmentClass = OverviewFragment.class;
         } else if (id == R.id.nav_dashboard) {
