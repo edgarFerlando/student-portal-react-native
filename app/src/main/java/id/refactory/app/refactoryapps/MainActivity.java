@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment = new AssignmentFragment();
                 // fragment = new DetailAssignmentFragment(); //--> Todo : Still Working on Passing Data Fragment to Fragment through Activity. #Prana, Des-06-2017.
                 break;
-            case R.id.nav_login:
+            case R.id.nav_logOut:
                 i = new Intent(getApplicationContext(), GitLogin.class);
                 startActivity(i);
                 finish();
