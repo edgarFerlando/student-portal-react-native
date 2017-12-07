@@ -2,6 +2,7 @@ package id.refactory.app.refactoryapps;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -38,6 +39,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class GitLogin extends AppCompatActivity {
+
 
     private Dialog MyDialog;
     @BindView(R.id.btn_login) Button webDialog;

@@ -1,7 +1,6 @@
 package id.refactory.app.refactoryapps;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -128,7 +127,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             startActivity(i);
             finish();
         }
-        else if (id == R.id.nav_login) {
+        else if (id == R.id.nav_logOut) {
             Intent i = new Intent(getApplicationContext(), GitLogin.class);
             startActivity(i);
             finish();

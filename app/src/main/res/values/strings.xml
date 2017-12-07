@@ -15,7 +15,7 @@
         completions."
     </string>
 
-    <string name="action_sign_in">Cotinue With Github</string>
+    <string name="action_sign_in">Continue With Github</string>
     <string name="platform">Immersive Platform</string>
     <string name="textHomeLogin">To continue, you must have a Github account</string>
     <string name="dialogfragment">Open DialogFragment</string>
