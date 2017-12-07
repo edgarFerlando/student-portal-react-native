@@ -1,4 +1,5 @@
-package id.refactory.app.refactoryapps;
+package id.refactory.app.refactoryapps.fragments;
+
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -6,11 +7,14 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +28,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
 import id.refactory.app.refactoryapps.models.UpdateAssignments;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
@@ -35,7 +41,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class DetailAssignments extends AppCompatActivity {
+import static android.app.Activity.RESULT_OK;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class DetailAssignmentFragment extends Fragment {
+
     public final static int PICK_IMAGE_REQUEST = 100;
     private static final int REQUEST_WRITE_PERMISSION = 786;
     private Uri imageUri;
@@ -45,7 +57,8 @@ public class DetailAssignments extends AppCompatActivity {
     private File file;
     ProgressDialog progressDialog;
     SessionManager sessionManager;
-    @Inject Retrofit retrofit;
+    @Inject
+    Retrofit retrofit;
 
     @BindView(R.id.tv_id_assignment) TextView id;
     @BindView(R.id.tv_status_assignment) TextView status;
@@ -56,16 +69,28 @@ public class DetailAssignments extends AppCompatActivity {
     @BindView(R.id.bt_update) Button button_update;
     @BindView(R.id.editText_value) EditText textValue;
 
+    private Unbinder unbinder;
+
+    public DetailAssignmentFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_assignments);
-        ButterKnife.bind(this);
-        RefactoryApplication.get(this).getApplicationComponent().inject(this);
-        progressDialog = new ProgressDialog(this);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        //return inflater.inflate(R.layout.fragment_detail_assignment, container, false);
+        final View view = inflater.inflate(R.layout.fragment_detail_assignment, container, false);
+        unbinder = ButterKnife.bind(this, view);
+//        RefactoryApplication.get(this).getApplicationComponent().inject(this);
+
+        //progressDialog = new ProgressDialog(this);
+        progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Upload Data ...");
 
-        Bundle extras = getIntent().getExtras();
+//      Bundle extras = getIntent().getExtras();
+        Bundle extras = getActivity().getIntent().getExtras();
         if (extras != null){
             Integer idAssign = extras.getInt("ID");
             String statusAssign = extras.getString("status");
@@ -94,10 +119,13 @@ public class DetailAssignments extends AppCompatActivity {
                 if (filePath != null){
                     getValue();
                 }else{
-                    Toast.makeText(DetailAssignments.this, "You did not choose  image attachment", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this, "You did not choose  image attachment", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "You did not choose  image attachment", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        return view;
     }
 
     public void getValue(){
@@ -116,7 +144,8 @@ public class DetailAssignments extends AppCompatActivity {
     public void updateAssignment(){
         progressDialog.show();
 
-        sessionManager = new SessionManager(getApplicationContext());
+//        sessionManager = new SessionManager(getApplicationContext());
+        sessionManager = new SessionManager(getActivity());
         HashMap<String, String> user = sessionManager.getTokenDetails();
 
         String tokenId = "Bearer " + user.get(SessionManager.KEY_NAME);
@@ -125,7 +154,7 @@ public class DetailAssignments extends AppCompatActivity {
         final String resultsValue = valueUpdate;
 
         // Parsing any Media type file
-        RequestBody requestBody = RequestBody.create(MediaType.parse(getContentResolver().getType(imageUri)), file);
+        RequestBody requestBody = RequestBody.create(MediaType.parse(getActivity().getContentResolver().getType(imageUri)), file);
         MultipartBody resultsAssignment = new MultipartBody.Builder()
                 .addFormDataPart("result_value",resultsValue)
                 .addFormDataPart("result_attachments", file.getName(),requestBody)
@@ -156,7 +185,8 @@ public class DetailAssignments extends AppCompatActivity {
     }
 
     private void showToast(String messages) {
-        Toast.makeText(this, messages, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, messages, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), messages, Toast.LENGTH_SHORT).show();
     }
 
     public void openImageChooser(){
@@ -166,24 +196,26 @@ public class DetailAssignments extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int reqCode, int resultCode, Intent data) {
+    public void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
 
 
         if (resultCode == RESULT_OK && reqCode == PICK_IMAGE_REQUEST) {
 
             imageUri = data.getData();
-            this.filePath = getRealPathFromURIPath(imageUri, this);
+//            this.filePath = getRealPathFromURIPath(imageUri, this);
+            this.filePath = getRealPathFromURIPath(imageUri, getActivity());
             this.file = new File(this.filePath);
             this.img.setImageURI(imageUri);
 
         }else {
-            Toast.makeText(DetailAssignments.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, "You haven't picked Image",Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "You haven't picked Image",Toast.LENGTH_LONG).show();
         }
     }
 
-    private String getRealPathFromURIPath(Uri imageUri, DetailAssignments detailAssignments) {
-        Cursor cursor = getContentResolver().query(imageUri,null,null,null,null);
+    private String getRealPathFromURIPath(Uri imageUri, FragmentActivity detailAssignments) {
+        Cursor cursor = getActivity().getContentResolver().query(imageUri,null,null,null,null);
         if (cursor == null){
             return imageUri.getPath();
         }else{
@@ -208,10 +240,12 @@ public class DetailAssignments extends AppCompatActivity {
         }
     }
 
+    /*
     public void onBackPressed(){
-//        Intent view = new Intent(getApplication(),Assignments.class);
-//        startActivity(view);
+        Intent view = new Intent(getApplication(),Assignments.class);
+        startActivity(view);
         finish();
     }
+*/
 
 }

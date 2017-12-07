@@ -3,6 +3,9 @@ package id.refactory.app.refactoryapps;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,8 +21,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
 import id.refactory.app.refactoryapps.adapter.assignment.AdapterAssignments;
+import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
 import id.refactory.app.refactoryapps.models.DataAssignments;
 import id.refactory.app.refactoryapps.models.ResultAssignments;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
@@ -95,7 +98,7 @@ public class Assignments extends BaseActivity {
                     }
 
                     //this data loads
-                    mAdapter = new AdapterAssignments(dataResults); //assignments
+                   // mAdapter = new AdapterAssignments(dataResults, null); //assignments
 
                     //attach to recycleview
                     mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -105,7 +108,9 @@ public class Assignments extends BaseActivity {
                     progressBar.setVisibility(View.GONE);
                     recyclerView.setAdapter(mAdapter);
 
+
                 }
+
 
             }
 

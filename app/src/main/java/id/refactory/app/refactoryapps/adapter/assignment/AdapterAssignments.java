@@ -11,9 +11,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import id.refactory.app.refactoryapps.R;
-import id.refactory.app.refactoryapps.models.DataAssignments;
 import id.refactory.app.refactoryapps.DetailAssignments;
+import id.refactory.app.refactoryapps.R;
+import id.refactory.app.refactoryapps.fragments.AssignmentFragment;
+import id.refactory.app.refactoryapps.models.DataAssignments;
 
 /**
  * Created by massam on 20/10/17.
@@ -21,12 +22,19 @@ import id.refactory.app.refactoryapps.DetailAssignments;
 
 public class AdapterAssignments extends RecyclerView.Adapter<AdapterAssignments.MyViewHolder> {
     private List<DataAssignments> assignments;
+    private AssignmentFragment.FragmentListener mListener;
 
     @BindView(R.id.tv_status) TextView textView;
 
-    public AdapterAssignments(List<DataAssignments> assignments){
+    public AdapterAssignments(List<DataAssignments> assignments, AssignmentFragment.FragmentListener listener)
+    {
+
         this.assignments = assignments;
+        this.mListener = listener;
     }
+
+//    public AdapterAssignments(FragmentActivity activity, ArrayList<DataAssignments> dataResults) {
+//    }
 
     @Override
     public AdapterAssignments.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i){
@@ -59,6 +67,16 @@ public class AdapterAssignments extends RecyclerView.Adapter<AdapterAssignments.
         holder.tv_link.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {;
+                /*
+                from Mas Andy
+                Pass Data via Fragment ,
+                String a = "Cuk";
+                Object coba;
+                mListener.setDetails(assignments);
+                //still on progress by Prana
+                */
+
+                TextView textview = (TextView) view.findViewById(R.id.tv_status);
                 Intent intent = new Intent(view.getContext(), DetailAssignments.class);
 
                 intent.putExtra("status",assign);
