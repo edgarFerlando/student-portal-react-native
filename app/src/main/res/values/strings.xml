@@ -20,7 +20,31 @@
     <string name="textHomeLogin">To continue, you must have a Github account</string>
     <string name="dialogfragment">Open DialogFragment</string>
     <string name="title_activity_hapus">Hapus</string>
+    
+    <!-- String Docs -->
+    <string name="docs_name">My Documents</string>
+    <string name="docs_national_id">National ID</string>
+    <string name="docs_national_detail">No document for National ID provided</string>
+    <string name="docs_family_card">Family Card</string>
+    <string name="docs_family_detail">No document for Family Card provided</string>
+    <string name="docs_tax_payer">Tax Payer Registration</string>
+    <string name="docs_tax_payer_detail">No document for Tax Payer Registration provided</string>
+    <string name="docs_birth_certificate">Birth Certificate</string>
+    <string name="docs_birth_detail">No document for Birth Certificate provided</string>
+    <string name="docs_police_report">Police Report Statement</string>
+    <string name="docs_police_report_detail">No document for Police Report Statement provided</string>
+    <string name="docs_upload">Upload</string>
+    <string name="docs_type">Type</string>
+    <string name="docs_btn_save">Save</string>
+    <string-array name="docs_array">
+        <item>National ID </item>
+        <item>Family Card</item>
+        <item>Tax Payer Registration</item>
+        <item>Birth Certificate</item>
+        <item>Police Report Statement</item>
+    </string-array>
 
+    
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_project">Home Project</string>
