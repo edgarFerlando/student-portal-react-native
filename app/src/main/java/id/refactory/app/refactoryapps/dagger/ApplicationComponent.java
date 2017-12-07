@@ -6,6 +6,7 @@ import dagger.Component;
 import id.refactory.app.refactoryapps.Assignments;
 import id.refactory.app.refactoryapps.DetailAssignments;
 import id.refactory.app.refactoryapps.GitLogin;
+import id.refactory.app.refactoryapps.fragments.AssignmentFragment;
 import id.refactory.app.refactoryapps.fragments.HRFragment;
 import id.refactory.app.refactoryapps.fragments.HomeFragment;
 import id.refactory.app.refactoryapps.fragments.OSFragment;
@@ -21,6 +22,7 @@ import id.refactory.app.refactoryapps.fragments.WPMFragment;
 public interface ApplicationComponent {
     void inject(Assignments assignments);
     void inject(DetailAssignments detailAssignments);
+    void inject (AssignmentFragment assignmentsFragment);
     void inject(GitLogin gitLogin);
     void inject(HomeFragment homeFragment);
     void inject(HRFragment hrFragment);
