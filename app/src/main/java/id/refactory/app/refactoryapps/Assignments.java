@@ -2,6 +2,7 @@ package id.refactory.app.refactoryapps;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -114,12 +115,4 @@ public class Assignments extends BaseActivity {
             }
         });
     }
-
-    public void onBackPressed(){
-//        Intent view = new Intent(getApplication(),MainActivity.class);
-//        startActivity(view);
-        finish();
-    }
-
-
 }

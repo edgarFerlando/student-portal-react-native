@@ -1,6 +1,7 @@
 package id.refactory.app.refactoryapps;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -113,12 +114,6 @@ public class Dashboard extends BaseActivity implements HomeFragment.OnFragmentIn
         Log.e("uu", berer );
         return berer;
 
-    }
-
-    public void onBackPressed(){
-//        Intent view = new Intent(getApplication(),MainActivity.class);
-//        startActivity(view);
-        finish();
     }
 
 }
