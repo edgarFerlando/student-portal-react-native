@@ -84,6 +84,7 @@ public class GitLogin extends AppCompatActivity {
             if (lastMilliSeconds >= timeNow()) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(i);
+                finish();
 
             } else {
 

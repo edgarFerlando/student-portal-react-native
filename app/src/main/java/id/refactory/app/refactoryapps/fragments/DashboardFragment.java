@@ -1,53 +1,50 @@
-package id.refactory.app.refactoryapps;
+package id.refactory.app.refactoryapps.fragments;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
+
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import id.refactory.app.refactoryapps.fragments.HRFragment;
-import id.refactory.app.refactoryapps.fragments.HomeFragment;
-import id.refactory.app.refactoryapps.fragments.OSFragment;
-import id.refactory.app.refactoryapps.fragments.SOFFragment;
-import id.refactory.app.refactoryapps.fragments.WPMFragment;
+import butterknife.Unbinder;
+import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.adapter.dashboard.PagerAdapter;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 
-
-public class Dashboard extends BaseActivity implements HomeFragment.OnFragmentInteractionListener, WPMFragment.OnFragmentInteractionListener, HRFragment.OnFragmentInteractionListener, SOFFragment.OnFragmentInteractionListener, OSFragment.OnFragmentInteractionListener {
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class DashboardFragment extends Fragment implements HomeFragment.OnFragmentInteractionListener, WPMFragment.OnFragmentInteractionListener, HRFragment.OnFragmentInteractionListener, SOFFragment.OnFragmentInteractionListener, OSFragment.OnFragmentInteractionListener
+    {
 
     SessionManager session;
     private String berer;
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.tablayout) TabLayout tabLayout;
-    @BindView(R.id.pager) ViewPager viewPager;
+    @BindView(R.id.tablayout)
+    TabLayout tabLayout;
+    @BindView(R.id.pager)
+    ViewPager viewPager;
+    private Unbinder unbinder;
 
-    @Override
-    protected int getLayoutResourceId() {
-//        This is change how usually using setContentView() to be more compatible with BaseActivity
-        return R.layout.activity_dashboard;
+    public DashboardFragment() {
+        // Required empty public constructor
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
-        toolbar.setTitle("Home Project");
-
-        // For set tab head to be title
-//        tabLayout.addTab(tabLayout.newTab().setText("Project"));
-//        tabLayout.addTab(tabLayout.newTab().setText("WPM"));
-//        tabLayout.addTab(tabLayout.newTab().setText("HackerRank"));
-//        tabLayout.addTab(tabLayout.newTab().setText("StackOverFlow"));
-//        tabLayout.addTab(tabLayout.newTab().setText("OpenSource"));
-
-        //set tab head tobe Icon
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        //return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        getActivity().setTitle("Dashboard");
 
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_project));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_wpm));
@@ -57,7 +54,7 @@ public class Dashboard extends BaseActivity implements HomeFragment.OnFragmentIn
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         // tabLayout has been binded using Butter Knife
-        final PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        final PagerAdapter adapter = new PagerAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -67,24 +64,25 @@ public class Dashboard extends BaseActivity implements HomeFragment.OnFragmentIn
                 viewPager.setCurrentItem(tab.getPosition());
                 switch (tab.getPosition()){
                     case 0:
-                        toolbar.setTitle("Home Project");
+                        getActivity().setTitle("Project");
                         break;
-                    case 1 :
-                        toolbar.setTitle("WPM");
+                    case 1:
+                        getActivity().setTitle("WPM");
                         break;
                     case 2:
-                        toolbar.setTitle("Hackerrank");
+                        getActivity().setTitle("Hacker Rank");
                         break;
-                    case 3 :
-                        toolbar.setTitle("Stack Overflow");
+                    case 3:
+                        getActivity().setTitle("Stack Overflow");
                         break;
                     case 4:
-                        toolbar.setTitle("Opensource");
+                        getActivity().setTitle("OpenSource");
                         break;
                     default:
-                        toolbar.setTitle("Home Project");
+                        getActivity().setTitle("Project");
                         break;
                 }
+
             }
 
             @Override
@@ -98,10 +96,12 @@ public class Dashboard extends BaseActivity implements HomeFragment.OnFragmentIn
             }
         });
 
+
+        return view;
     }
 
     public String GetToken() {
-        session = new SessionManager(getApplicationContext());
+        session = new SessionManager(getActivity().getApplicationContext());
 
         //Toast.makeText(getApplicationContext(),"User Login Status " + session.loggedIn(), Toast.LENGTH_LONG).show();
         //session.checkLogin();
