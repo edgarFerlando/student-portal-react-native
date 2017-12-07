@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.util.HashMap;
 
@@ -42,6 +43,7 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         setContentView(R.layout.activity_dashboard);
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
+        toolbar.setTitle("Home Project");
 
         //Set DrawerLayout
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -60,11 +62,11 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
 
         //set tab head tobe Icon
 
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_projects));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_wpm));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_hr));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_sof));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_os));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_project));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_wpm));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_hackerrank));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_sof));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_os));
 
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         // tabLayout has been binded using Butter Knife
@@ -76,6 +78,26 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                switch (tab.getPosition()){
+                    case 0:
+                        toolbar.setTitle("Home Project");
+                        break;
+                    case 1 :
+                        toolbar.setTitle("WPM");
+                        break;
+                    case 2:
+                        toolbar.setTitle("Hackerrank");
+                        break;
+                    case 3 :
+                        toolbar.setTitle("Stack Overflow");
+                        break;
+                    case 4:
+                        toolbar.setTitle("Opensource");
+                        break;
+                    default:
+                        toolbar.setTitle("Home Project");
+                        break;
+                }
             }
 
             @Override
