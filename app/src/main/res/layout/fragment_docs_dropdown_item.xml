@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:paddingLeft="10dp"
     android:paddingTop="5dp"
-    android:paddingRight="10dp"
     android:paddingBottom="5dp"
-    android:background="#b3e2ff"
+    android:background="#f5f5f5"
     />
