@@ -41,6 +41,19 @@ public class MainActivity extends BaseActivity implements OverviewFragment.OnFra
     }
 
     @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();{
+                //Intent view = new Intent(getApplication(),MainActivity.class);
+                //startActivity(view);
+                finish();
+            }
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -61,7 +74,7 @@ public class MainActivity extends BaseActivity implements OverviewFragment.OnFra
 
         return super.onOptionsItemSelected(item);
     }
-    
+
     @Override
     public void onFragmentInteraction(Uri uri) {
     }
