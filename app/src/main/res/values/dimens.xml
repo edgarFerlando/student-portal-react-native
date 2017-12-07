@@ -9,4 +9,5 @@
     <dimen name="list_item_spacing_half">8dp</dimen>
     <dimen name="material_sub_heading">16sp</dimen>
     <dimen name="material_app_bar_text">20sp</dimen>
+    <dimen name="button_size">80dp</dimen>
 </resources>
