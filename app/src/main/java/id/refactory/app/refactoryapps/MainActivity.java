@@ -169,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_upload_docs:
                 fragment = new UploadDocsFragment();
                 break;
+
         }
 
         //replacing the fragment
