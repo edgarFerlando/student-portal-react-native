@@ -6,7 +6,7 @@
     tools:context="id.refactory.app.refactoryapps.fragments.SOFFragment">
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBarSOF"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

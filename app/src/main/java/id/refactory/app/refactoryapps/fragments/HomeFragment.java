@@ -1,6 +1,5 @@
 package id.refactory.app.refactoryapps.fragments;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,7 +27,6 @@ import id.refactory.app.refactoryapps.api.services.RappClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 
 public class HomeFragment extends Fragment {
