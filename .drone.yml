@@ -4,7 +4,7 @@ pipeline:
     commands:
         - fastlane android test
     when:
-      event: [ pull_request, push ]
+      event: [ pull_request ]
       branch: develop
  
   deploy_playstore:
@@ -12,13 +12,13 @@ pipeline:
     commands:
         - fastlane android beta        
     when:
-      event: [ pull_request, push ]
+      event: [ pull_request ]
       branch: develop
 
   gitea_push:
     image: appleboy/drone-git-push
     branch: develop
-    remote: https://git.refactory.id/fendijatmikon/Refactory-App-Native.git 
+    remote: https://git@git.refactory.id:refactory/Refactory-App-Native.git
     force: false
     commit: true
 
