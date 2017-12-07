@@ -63,4 +63,8 @@
     <!--Pasal 5 content-->
     <string name="coc_pasal_6">Pasal 6: Tambahan</string>
     <string name="coc_pasal_6_content">- Hal-hal yang belum diatur di tata tertib ini dan dirasa dibutuhkan berhak ditambahkan oleh Refactory dan akan dikomunikasikan kepada siswa.</string>
+
+    <!--Card Related String-->
+    <string name="task_detail">detail</string>
+
 </resources>
