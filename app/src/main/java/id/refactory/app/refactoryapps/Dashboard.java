@@ -1,18 +1,10 @@
 package id.refactory.app.refactoryapps;
 
-import android.content.Intent;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
-import android.widget.TextView;
 
 import java.util.HashMap;
 
@@ -27,31 +19,25 @@ import id.refactory.app.refactoryapps.adapter.dashboard.PagerAdapter;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 
 
-public class Dashboard extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener, WPMFragment.OnFragmentInteractionListener, HRFragment.OnFragmentInteractionListener, SOFFragment.OnFragmentInteractionListener, OSFragment.OnFragmentInteractionListener {
+public class Dashboard extends BaseActivity implements HomeFragment.OnFragmentInteractionListener, WPMFragment.OnFragmentInteractionListener, HRFragment.OnFragmentInteractionListener, SOFFragment.OnFragmentInteractionListener, OSFragment.OnFragmentInteractionListener {
 
     SessionManager session;
     private String berer;
     @BindView(R.id.toolbar) Toolbar toolbar;
-    @BindView(R.id.drawer_layout) DrawerLayout drawer;
-    @BindView(R.id.nav_view) NavigationView navigationView;
     @BindView(R.id.tablayout) TabLayout tabLayout;
     @BindView(R.id.pager) ViewPager viewPager;
 
     @Override
+    protected int getLayoutResourceId() {
+//        This is change how usually using setContentView() to be more compatible with BaseActivity
+        return R.layout.activity_dashboard;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
-        setSupportActionBar(toolbar);
         ButterKnife.bind(this);
         toolbar.setTitle("Home Project");
-
-        //Set DrawerLayout
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
 
         // For set tab head to be title
 //        tabLayout.addTab(tabLayout.newTab().setText("Project"));
@@ -127,44 +113,6 @@ public class Dashboard extends AppCompatActivity implements NavigationView.OnNav
         Log.e("uu", berer );
         return berer;
 
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-//        Fragment fragment = null;
-//        Class fragmentClass = null;
-
-        if (id == R.id.nav_overview) {
-//            // Handle the fragment action
-//            fragmentClass = OverviewFragment.class;
-        } else if (id == R.id.nav_dashboard) {
-            Intent i = new Intent(getApplicationContext(),Dashboard.class);
-            startActivity(i);
-            finish();
-        } else if (id == R.id.nav_assignment) {
-            Intent i = new Intent(getApplicationContext(), Assignments.class);
-            startActivity(i);
-            finish();
-        }
-        else if (id == R.id.nav_logOut) {
-            Intent i = new Intent(getApplicationContext(), GitLogin.class);
-            startActivity(i);
-            finish();
-        }
-
-//        try {
-//            fragment = (Fragment) fragmentClass.newInstance();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 
     public void onBackPressed(){
