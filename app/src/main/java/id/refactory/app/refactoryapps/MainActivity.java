@@ -28,6 +28,7 @@ import id.refactory.app.refactoryapps.fragments.AssignmentFragment;
 import id.refactory.app.refactoryapps.fragments.DashboardFragment;
 import id.refactory.app.refactoryapps.fragments.FeedbackDialog;
 import id.refactory.app.refactoryapps.fragments.OverviewFragment;
+import id.refactory.app.refactoryapps.fragments.UploadDocsFragment;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AssignmentFragment.FragmentListener {
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
+
     private void displaySelectedScreen(int ItemId) {
         //Creating fragment object
         Intent i;
@@ -164,6 +166,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 deleteAppData();
                 break;
 
+            case R.id.nav_upload_docs:
+                fragment = new UploadDocsFragment();
+                break;
         }
 
         //replacing the fragment
@@ -209,6 +214,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     uncomment "public void onClick(View view)"
     Still on Progress By Prana.
      */
+
     @Override
     public void setDetails(Object data) {
 
