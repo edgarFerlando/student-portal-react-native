@@ -19,6 +19,8 @@ public class UploadDocsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View uploadDocs = inflater.inflate(R.layout.fragment_upload_docs, container, false);
 
+        getActivity().setTitle("Upload docs");
+
         Spinner spinner = (Spinner) uploadDocs.findViewById(R.id.docs_dropdown);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(),
                 R.array.docs_array, R.layout.fragment_docs_dropdown_item);
