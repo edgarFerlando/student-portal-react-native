@@ -75,10 +75,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
             startActivity(i);
             finish();*/
         else if (id == R.id.nav_upload_docs) {
-            newFragment = new UploadDocsFragment();
-            transaction.replace(R.id.fragment_container, newFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
+//            newFragment = new UploadDocsFragment();
+//            transaction.replace(R.id.fragment_container, newFragment);
+//            transaction.addToBackStack(null);
+//            transaction.commit();
         }
 
         else if (id == R.id.nav_logOut){
