@@ -1,5 +1,7 @@
 package id.refactory.app.refactoryapps;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.refactory.app.refactoryapps.fragments.FeedbackDialog;
+import id.refactory.app.refactoryapps.fragments.UploadDocsFragment;
 
 /**
  * Created by dhanialrizky on 07/12/17.
@@ -50,6 +53,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
+        Fragment newFragment;
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
         int id = item.getItemId();
 //        Fragment fragment = null;
 //        Class fragmentClass = null;
@@ -68,6 +74,14 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
             Intent i = new Intent(getApplicationContext(), GitLogin.class);
             startActivity(i);
             finish();*/
+        else if (id == R.id.nav_upload_docs) {
+//            newFragment = new UploadDocsFragment();
+//            transaction.replace(R.id.fragment_container, newFragment);
+//            transaction.addToBackStack(null);
+//            transaction.commit();
+
+        }
+
         else if (id == R.id.nav_logOut){
             Intent i = new Intent (getApplicationContext(),GitLogin.class);
             startActivity(i);
