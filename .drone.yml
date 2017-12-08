@@ -1,0 +1,24 @@
+pipeline:
+  test_build:
+    image: pndxdcode/alpine-android-fastlane:v3
+    commands:
+        - fastlane android test
+    when:
+      event: [ pull_request ]
+      branch: develop
+ 
+  deploy_playstore:
+    image: pndxdcode/alpine-android-fastlane:v3
+    commands:
+        - fastlane android beta        
+    when:
+      event: [ pull_request ]
+      branch: develop
+
+  gitea_push:
+    image: appleboy/drone-git-push
+    branch: develop
+    remote: https://git@git.refactory.id:refactory/Refactory-App-Native.git
+    force: false
+    commit: true
+
