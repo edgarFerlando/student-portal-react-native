@@ -30,6 +30,7 @@ import id.refactory.app.refactoryapps.fragments.DashboardFragment;
 import id.refactory.app.refactoryapps.fragments.FeedbackDialog;
 import id.refactory.app.refactoryapps.fragments.OverviewFragment;
 import id.refactory.app.refactoryapps.fragments.UploadDocsFragment;
+import id.refactory.app.refactoryapps.fragments.Sc_EditProfileFragment;
 import id.refactory.app.refactoryapps.sessions.SessionManager;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AssignmentFragment.FragmentListener {
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-    //add this line to display menu1 when the activity is loaded
+    //add this line to display menu when the activity is loaded
     displaySelectedScreen(R.id.nav_overview);
 
 }
@@ -143,6 +144,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                break;
                 fragment = new AssignmentFragment();
                 // fragment = new DetailAssignmentFragment(); //--> Todo : Still Working on Passing Data Fragment to Fragment through Activity. #Prana, Des-06-2017.
+                break;
+            case R.id.nav_studentcard:
+                fragment = new Sc_EditProfileFragment();
                 break;
             case R.id.nav_feedback:
                 final BottomSheetDialog bottomSheetDialog = new FeedbackDialog(this);

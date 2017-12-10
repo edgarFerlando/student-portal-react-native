@@ -27,6 +27,11 @@
 
     <item android:title="Refactory Gate">
         <menu>
+            <group android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_studentcard"
+                android:icon="@drawable/ic_student_card"
+                android:title="Student Card" />
             <item
                 android:id="@+id/nav_upload_docs"
                 android:icon="@drawable/ic_docs_upload"
@@ -45,7 +50,7 @@
                 android:id="@+id/nav_logOut"
                 android:icon="@drawable/ic_lock_black_24dp"
                 android:title="Log out" />
-
+            </group>
         </menu>
     </item>
 </menu>
