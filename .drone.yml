@@ -1,8 +1,4 @@
 pipeline:
-  clone:     
-    image: plugins/git
-    depth: 50
-    tags: true
   test_build:
     image: pndxdcode/alpine-android-fastlane:v3
     commands:
@@ -22,7 +18,7 @@ pipeline:
   gitea_push:
     image: appleboy/drone-git-push
     branch: develop
-    remote: git@git.refactory.id:refactory/Refactory-App-Native.git
+    remote: https://git.refactory.id/fendijatmikon/Refactory-App-Native2.git
     force: false
     commit: true
 
