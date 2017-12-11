@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">Refactory Apps</string>
+
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <string name="action_sign_in">Continue With Github</string>
+    <string name="platform">Immersive Platform</string>
+    <string name="textHomeLogin">To continue, you must have a Github account</string>
+    <string name="dialogfragment">Open DialogFragment</string>
+    <string name="title_activity_hapus">Hapus</string>
+    
+    <!-- String Docs -->
+    <string name="docs_name">My Documents</string>
+    <string name="docs_national_id">National ID</string>
+    <string name="docs_national_detail">No document for National ID provided</string>
+    <string name="docs_family_card">Family Card</string>
+    <string name="docs_family_detail">No document for Family Card provided</string>
+    <string name="docs_tax_payer">Tax Payer Registration</string>
+    <string name="docs_tax_payer_detail">No document for Tax Payer Registration provided</string>
+    <string name="docs_birth_certificate">Birth Certificate</string>
+    <string name="docs_birth_detail">No document for Birth Certificate provided</string>
+    <string name="docs_police_report">Police Report Statement</string>
+    <string name="docs_police_report_detail">No document for Police Report Statement provided</string>
+    <string name="docs_upload">Upload</string>
+    <string name="docs_type">Type</string>
+    <string name="docs_btn_save">Save</string>
+    <string-array name="docs_array">
+        <item>National ID </item>
+        <item>Family Card</item>
+        <item>Tax Payer Registration</item>
+        <item>Birth Certificate</item>
+        <item>Police Report Statement</item>
+    </string-array>
+
+    
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_project">Home Project</string>
+
+    <!--TODO: Fill title_activity for Toolbar -->
+    <string name="title_activity_main"></string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="assignments">Assignments</string>
+    <string name="feedback_title">Your Feedback to us</string>
+    <string name="feedback_msg">With this form you can send Your Feedback, Comment, or Feeling when you be part of Refactory family.</string>
+    <string name="feedback_anonymous">Send as Anonymous</string>
+    <string name="submit_msg">Submit</string>
+
+    <!--Pasal 1 Content-->
+    <string name="coc_pasal_1">Pasal 1: Sifat dan kedudukan</string>
+    <string name="coc_pasal_1_content">- Tata tertib ini berlaku untuk siswa Refactory selama mengikuti Bootcamp. \n- Tata tertib ini bersifat mutlak dan mengikat. \n- Tata tertib ini wajib diketahui siswa pada hari pertama Bootcamp.</string>
+
+    <!--Pasal 2 Content-->
+    <string name="coc_pasal_2">Pasal 2: Hari dan waktu belajar</string>
+    <string name="coc_pasal_2_content">- Bootcamp berlangsung selama 12 Minggu (Onsite). \n- Hari belajar berlangsung selama 6 hari yaitu Senin sampai dengan Sabtu. Adapun hari Sabtu merupakan hari tambahan belajar dengan durasi berbeda dengan hari Senin-Jumat. \n- Jam belajar dimulai pada pukul 10.00 - 22.00. Adapun penambahan ataupun pengurangan waktu belajar dapat dilakukan berdasarkan kebutuhan kurikulum. \n- Pihak yang berwenang untuk menambah atau mengurangi waktu belajar adalah Refactory.
+    </string>
+
+    <!--Pasal 3 Content-->
+    <string name="coc_pasal_3">Pasal 3: Kewajiban siswa</string>
+    <string name="coc_pasal_3_content">-Menyelesaikan seluruh keperluan administrasi dan keuangan sebelum masa Bootcamp berlangsung. \n- Kewajiban administrasi meliputi seluruh kebutuhan dokumen legal. \n- Kewajiban keuangan meliputi tuition dan kesepakatan lainnya yang telah diambil. \n- Mengikuti Bootcamp hingga selesai. \n- Jika terdapat halangan bagi siswa untuk mengikuti Bootcamp hingga selesai, maka wajib memberitahukan terlebih dahulu ke pihak Refactory. \n- Jika siswa berniat untuk mengundurkan diri, maka harus mengikuti prosedur pengunduran yang telah diatur oleh pihak Refactory. \n- Masuk tepat waktu. \n- Jika ada keterlambatan untuk datang tepat waktu, maka wajib untuk memberitahukan ke pihak Refactory. \n- Jika siswa yang terlambat datang tepat waktu tidak memberitahukan ke pihak Refactory, maka hal tersebut dianggap sebagai pelanggaran. \n- Pulang tepat waktu \n- Jika siswa memiliki kebutuhan untuk pulang lebih cepat, maka wajib meminta persetujuan pihak Refactory. \n- Jika siswa pulang lebih cepat tanpa pemberitahuan, maka dianggap sebagai pelanggaran. \n- Setiap siswa harus berkomitmen mengikuti proses belajar mengajar secara penuh. \n- Setiap siswa wajib mengikuti sesi penyampaian materi yang telah dijadwalkan. \n- Setiap siswa wajib mengerjakan tugas yang diberikan kepadanya dengan baik. \n- Setiap siswa wajib memperhatikan arahan dari mentor dan pihak-pihak lain yang menjadi bagian dari Refactory. \n- Setiap siswa wajib meminta izin atau memberitahu pihak Refactory jika akan melakukan kegiatan di luar belajar mengajar, seperti ISHOMA, merokok, dan kegiatan lain yang wajar dilakukan. \n- Mengikuti kegiatan tambahan yang ditentukan pihak Refactory. \n- Kegiatan tambahan yang dimaksud meliputi Acara Kelulusan, Acara Keakraban, pembuatan video dan hal-hal lain di luar proses belajar mengajar yang diatur oleh Refactory. \n- Menjaga properti kelas dan pribadi. \n- Segala kerusakan properti kelas yang secara sengaja dilakukan oleh siswa harus diganti. \n- Siswa wajib menjaga properti pribadi masing-masing. \n- Refactory tidak bertanggung jawab atas kerusakan properti pribadi yang diakibatkan oleh kelalaian siswa.</string>
+
+    <!--Pasal 4 content-->
+    <string name="coc_pasal_4">Pasal 4: Larangan bagi siswa</string>
+    <string name="coc_pasal_4_content">-Siswa dilarang melakukan hal-hal yang mengganggu jalannya proses belajar mengajar selama Bootcamp. \n- Siswa dilarang mengkonsumsi minuman keras dan segala bentuk makanan dan atau minuman yang berpotensi menghilangkan kesadaran siswa selama mengikuti Bootcamp. \n- Siswa dilarang melakukan tindakan kriminal sesuai aturan hukum di Indonesia. \n- Siswa dilarang mengganggu rekan belajarnya. \n- Siswa dilarang melakukan tindakan yang melecehkan keyakinan, gender, ras dan golongan baik dalam sikap dan atau ucapan. \n- Siswa dilarang merusak properti kelas maupun pihak lain. \n- Siswa dilarang melakukan aktivitas yang mencatut nama Refactory untuk kepentingan diluar Bootcamp. \n- Siswa dilarang menggunakan fasilitas Refactory untuk hal-hal diluar kepentingan Bootcamp. \n</string>
+
+    <!--Pasal 5 content-->
+    <string name="coc_pasal_5">Pasal 5: Sanksi</string>
+    <string name="coc_pasal_5_content">- Teguran lisan. \n- Surat Peringatan Pertama. \n- Surat Peringatan Kedua. \n- Surat Peringatan Ketiga. \n- Dikeluarkan. \n- Adapun mekanisme pemberian sanksi merupakan kewenangan Refactory dan akan dijalankan dengan memegang prinsip keadilan, keterbukaan dan memegang norma universal yang berlaku yang berlaku dalam masyarakat. \n</string>
+
+    <!--Pasal 5 content-->
+    <string name="coc_pasal_6">Pasal 6: Tambahan</string>
+    <string name="coc_pasal_6_content">- Hal-hal yang belum diatur di tata tertib ini dan dirasa dibutuhkan berhak ditambahkan oleh Refactory dan akan dikomunikasikan kepada siswa.</string>
+
+    <!--Card Related String-->
+    <string name="task_detail">detail</string>
+
+</resources>
