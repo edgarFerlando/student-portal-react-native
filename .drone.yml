@@ -1,4 +1,8 @@
 pipeline:
+  clone:     
+    image: plugins/git
+    depth: 50
+    tags: true
   test_build:
     image: pndxdcode/alpine-android-fastlane:v3
     commands:
