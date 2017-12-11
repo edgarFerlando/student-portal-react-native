@@ -18,7 +18,6 @@ import id.refactory.app.refactoryapps.R;
  */
 public class Sc_EditProfileFragment extends Fragment {
 
-
     public Sc_EditProfileFragment() {
         // Required empty public constructor
     }
@@ -30,10 +29,9 @@ public class Sc_EditProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         getActivity().setTitle("Student Card");
 
-
         // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_sc__edit_profile, container, false);
-        view = inflater.inflate(R.layout.fragment_sc__edit_profile, container, false);
+//        return inflater.inflate(R.layout.fragment_sc_edit_profile, container, false);
+        view = inflater.inflate(R.layout.fragment_sc_edit_profile, container, false);
 
 //        TextView t_myprofile = (TextView) view.findViewById(R.id.tv_sc_myprofile);
 //        final LinearLayout Detail_MyProfile = (LinearLayout) view.findViewById(R.id.sc_detail_myprofile);
@@ -63,7 +61,6 @@ public class Sc_EditProfileFragment extends Fragment {
                 }
             }
         });
-
     }
 
     public void view_Myprotofolio_Detail() {
@@ -85,7 +82,6 @@ public class Sc_EditProfileFragment extends Fragment {
                 }
             }
         });
-
     }
 
     public void view_Mycode_Detail() {
