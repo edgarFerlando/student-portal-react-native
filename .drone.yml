@@ -18,7 +18,7 @@ pipeline:
   gitea_push:
     image: appleboy/drone-git-push
     branch: develop
-    remote: git@git.refactory.id:refactory/Refactory-App-Native.git 
+    remote: https://git.refactory.id/refactory/Refactory-App-Native.git 
     force: false
     commit: true
 
