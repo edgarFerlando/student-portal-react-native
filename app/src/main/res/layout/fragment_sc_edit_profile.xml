@@ -321,8 +321,6 @@
         </RelativeLayout>
         </ScrollView>
 
-
-
     </android.support.v7.widget.CardView>
 
         <!--CardView For My Code-->
@@ -379,7 +377,6 @@
             </android.widget.LinearLayout>
 
             </android.support.v7.widget.CardView>
-
 
         <!--<include layout="@layout/fragment_code_of_conduct"></include>-->
 
