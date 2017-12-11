@@ -44,7 +44,7 @@ public class DashboardFragment extends Fragment implements HomeFragment.OnFragme
         //return inflater.inflate(R.layout.fragment_dashboard, container, false);
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
         unbinder = ButterKnife.bind(this, view);
-        getActivity().setTitle("Dashboard");
+        getActivity().setTitle("Project");
 
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_project));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.ic_refactory_wpm));
