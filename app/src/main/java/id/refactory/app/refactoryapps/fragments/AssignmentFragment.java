@@ -3,7 +3,9 @@ package id.refactory.app.refactoryapps.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +27,7 @@ import butterknife.Unbinder;
 import id.refactory.app.refactoryapps.R;
 import id.refactory.app.refactoryapps.RefactoryApplication;
 import id.refactory.app.refactoryapps.adapter.assignment.AdapterAssignments;
+import id.refactory.app.refactoryapps.adapter.assignment.AssignmentPagerAdapter;
 import id.refactory.app.refactoryapps.api.request.RetrofitAssignment;
 import id.refactory.app.refactoryapps.models.DataAssignments;
 import id.refactory.app.refactoryapps.models.ResultAssignments;
@@ -44,18 +47,9 @@ public class AssignmentFragment extends Fragment {
     private FragmentListener mFragmentListener;
 //    EventBus -> pelajari untuk pass data via fragment
 
-   @Inject
-    Retrofit retrofit;
-
-    @BindView(R.id.progressBar) ProgressBar progressBar;
-    @BindView(R.id.assignment_numbers) RecyclerView recyclerView;
-    private Unbinder unbinder;
-
-    private AdapterAssignments mAdapter;
-    List<DataAssignments> assignments;
-
-    private RecyclerView.LayoutManager mLayoutManager;
-    SessionManager sessionManager;
+    @BindView(R.id.assignmentTabLayout) TabLayout tabLayout;
+    @BindView(R.id.assignmentPager) ViewPager viewPager;
+    protected Unbinder unbinder;
 
     public AssignmentFragment() {
         // Required empty public constructor
@@ -74,84 +68,36 @@ public class AssignmentFragment extends Fragment {
        // RefactoryApplication.get(this).getApplicationComponent().inject(this); //--> getting error please fix
         RefactoryApplication.get(getActivity()).getApplicationComponent().inject(this); //-->  fix by add "void inject (AssignmentFragment assignmentsFragment);" in dager.AplicationComponet
 
-       // Call Method initViews-> to set & Load the recyclerview data
-        initViews();
-        getActivity().setTitle("Assignment");
-        //Show Progress Bar
-        progressBar.setVisibility(View.VISIBLE);
-        return view;
-    }
+        getActivity().setTitle("Assignments");
 
-   private void initViews() {
-        recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        loadDataAssignments();
+        tabLayout.addTab(tabLayout.newTab().setText("Todo"));
+        tabLayout.addTab(tabLayout.newTab().setText("Doing"));
+        tabLayout.addTab(tabLayout.newTab().setText("Ready"));
 
-        /*
-        //Use this code below here if you want to remove the initViews() method
-        getActivity().setTitle("Assignment");
-        return view;
-        */
-    }
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        final AssignmentPagerAdapter assignmentPagerAdapter = new AssignmentPagerAdapter(getActivity().getSupportFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(assignmentPagerAdapter);
+        viewPager.setOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
-    private void loadDataAssignments() {
-
-        sessionManager = new SessionManager(getActivity());
-        HashMap<String, String> user = sessionManager.getTokenDetails();
-
-        String storeToken = user.get(SessionManager.KEY_NAME);
-        String tokenType = "Bearer";
-
-        Log.d("yeah", "loadDataAssignments: " + tokenType);
-        String dataToken = tokenType + " " + storeToken;
-
-        //this code is not working, because retrofit (dagger) get error Nullpointer
-        RetrofitAssignment apiservice = retrofit.create(RetrofitAssignment.class); // --> has fixed after add "void inject (AssignmentFragment assignmentsFragment);" in dager.AplicationComponet
-
-        //This code is work but not smoth, because it using direct call with getClient().create(RetrofitAssigment.class)
-        //RetrofitAssignment apiservice = RetrofitConnect.getClient().create(RetrofitAssignment.class);
-
-        Call<ResultAssignments> call = apiservice.listData(dataToken);
-        call.enqueue(new Callback<ResultAssignments>() {
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onResponse(Call<ResultAssignments> call, Response<ResultAssignments> response) {
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
 
-                if (response.isSuccessful()) {
-                    assignments = new ArrayList<>();
-                    ResultAssignments result = response.body();
-//                   Log.d("yeah", "onResponse: "+new Gson().toJson(result));
-                    assignments = result.getData();
-
-                    //Filter Project
-                    ArrayList<DataAssignments> dataResults = new ArrayList<DataAssignments>();
-                    for (DataAssignments data : assignments) {
-                        if (data.getAssignmentType().toUpperCase().equals("PROJECT")) {
-                            dataResults.add(data);
-                        }
-                    }
-
-                    //this data loads
-                    mAdapter = new AdapterAssignments(dataResults, mFragmentListener); //assignments
-
-                    //attach to recycleview
-                    mLayoutManager = new LinearLayoutManager(getActivity());
-                    recyclerView.setLayoutManager(mLayoutManager);
-                    recyclerView.setItemAnimator(new DefaultItemAnimator());
-                    recyclerView.setAdapter(mAdapter);
-                    //Hide Progress Bar
-                    progressBar.setVisibility(View.GONE);
-
-                }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
 
             }
 
             @Override
-            public void onFailure(Call<ResultAssignments> call, Throwable t) {
-                Log.d("Error", t.getMessage());
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
-  }
+
+        return view;
+    }
 
     @Override
     public void onAttach(Context context) {
