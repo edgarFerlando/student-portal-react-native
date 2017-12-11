@@ -56,10 +56,11 @@ public class DoingAdapter extends RecyclerView.Adapter<DoingAdapter.MyViewHolder
 
         if(project.matches(projects) && assignStatuses.matches(assignStatus)){
             holder.tv_status.setBackgroundResource(R.color.backgroundOrange);
-            holder.tv_status.setText(assignments.get(position).getStatus());
             holder.tv_ticket.setText(assignments.get(position).getId().toString());
-            holder.tv_link.setText(assignments.get(position).getTitle());
+            holder.tv_title.setText(assignments.get(position).getTitle());
             holder.tv_description.setText(assignments.get(position).getDescription());
+            holder.tv_link.setText(assignments.get(position).getUrl());
+            holder.tv_status.setText(assignments.get(position).getStatus().toUpperCase());
         }
 
         final String assign= assignments.get(position).getStatus();
@@ -115,6 +116,7 @@ public class DoingAdapter extends RecyclerView.Adapter<DoingAdapter.MyViewHolder
         @BindView(R.id.tv_code_tickets) TextView tv_ticket;
         @BindView(R.id.tv_link_tickets) TextView tv_link;
         @BindView(R.id.tv_description) TextView tv_description;
+        @BindView(R.id.tv_title_assignment) TextView tv_title;
         @BindView(R.id.cardview_layout) LinearLayout cardviewLayout;
 
         public MyViewHolder(View view){

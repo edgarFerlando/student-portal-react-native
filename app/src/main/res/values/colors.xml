@@ -19,5 +19,6 @@
     <color name="textColor">#000000</color>
     <color name="btnUpdate">#b71c1c</color>
     <color name="textUpdate">#EFEFEF</color>
+    <color name="textLink">#002171</color>
 
 </resources>
