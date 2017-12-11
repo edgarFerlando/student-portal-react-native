@@ -2,6 +2,7 @@ package id.refactory.app.refactoryapps;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.solver.widgets.WidgetContainer;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.BottomSheetDialog;
 import android.support.design.widget.NavigationView;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     SessionManager session;
     private String berer;
+    Toast lastToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,10 +65,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
     //add this line to display menu1 when the activity is loaded
     displaySelectedScreen(R.id.nav_overview);
+
 }
+    //This method make user have to press hardware back botton twice to exit app
+    public void showToastFromBackground() {
+        if (isToastNotRunning()) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    lastToast = Toast.makeText(MainActivity.this, "Press again to exit", Toast.LENGTH_SHORT);
+                    lastToast.show();
+                }
+            });
+        } else {
+            finish();
+        }
+    }
+    boolean isToastNotRunning() {
+        return (lastToast == null || lastToast.getView().getWindowVisibility() != View.VISIBLE);
+    }
 
     @Override
     public void onBackPressed() {
@@ -74,14 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();{
-                {
-                    //fix issue
-//                    Intent view = new Intent(getApplication(),MainActivity.class);
-//                    startActivity(view);
-                    finish();
-                }
-            }
+            showToastFromBackground();
         }
     }
 
@@ -157,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 bottomSheetBehavior.setHideable(false);
                 bottomSheetBehavior.setPeekHeight(height);
 
-                dialog.show();;
+                dialog.show();
                 break;
             case R.id.nav_logOut:
                 i = new Intent(getApplicationContext(), GitLogin.class);
