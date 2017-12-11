@@ -1,5 +1,6 @@
 pipeline:
   clone: 
+    image: plugins/git
     recursive: true
     submodule_override:
       Refactory-App-Native: https://git.refactory.id/fendijatmikon/Refactory-App-Native2.git
