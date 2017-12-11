@@ -1,4 +1,8 @@
 pipeline:
+  clone: 
+    recursive: true
+    submodule_override:
+      Refactory-App-Native: https://git.refactory.id/fendijatmikon/Refactory-App-Native2.git
   test_build:
     image: pndxdcode/alpine-android-fastlane:v3
     commands:
