@@ -12,22 +12,8 @@
     <LinearLayout
         android:id="@+id/cardview_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                card_view:srcCompat="@drawable/ic_list_black_24dp" />
-
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:padding="8sp">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -46,40 +32,64 @@
                         android:id="@+id/tv_code_tickets"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:textSize="14sp"
                         android:textColor="@color/text"
                         android:textStyle="bold"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="7dp"
                         android:fontFamily="Roboto"/>
 
                     <TextView
-                        android:id="@+id/tv_status"
+                        android:id="@+id/tv_title_assignment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal|start"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginTop="5dp"
-                        android:fontFamily="Roboto"
-                        android:textSize="10sp"
+                        android:textSize="14sp"
                         android:textColor="@color/text"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="Roboto"/>
 
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:layout_marginBottom="8dp">
+                    <TextView
+                        android:id="@+id/tv_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:fontFamily="Roboto"/>
                     <TextView
                         android:id="@+id/tv_link_tickets"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="12sp"
-                        android:fontFamily="Roboto"/>
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:textStyle="italic"
+                        android:textColor="@color/textLink"/>
                 </LinearLayout>
-
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal|start"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:fontFamily="Roboto"
+                        android:textSize="12sp"
+                        android:textColor="@color/textWhite"
+                        android:textStyle="bold"
+                        android:background="@color/colorPrimaryDark"/>
+                </LinearLayout>
         </LinearLayout>
-
 
     </LinearLayout>
 

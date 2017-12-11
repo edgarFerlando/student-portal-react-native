@@ -8,6 +8,9 @@
     <color name="colorControlNormal">#B71C1C</color>
     <color name="colorTransparent">#00000000</color>
     <color name="background">#efefef</color>
+    <color name="backgroundBlue">#004ba0</color>
+    <color name="backgroundOrange">#bb4d00</color>
+    <color name="backgroundGreen">#087f23</color>
     <color name="textWhite">#FFFFFF</color>
     <color name="text">#000000</color>
     <color name="tabcolor">#262626</color>
@@ -16,5 +19,6 @@
     <color name="textColor">#000000</color>
     <color name="btnUpdate">#b71c1c</color>
     <color name="textUpdate">#EFEFEF</color>
+    <color name="textLink">#002171</color>
 
 </resources>

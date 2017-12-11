@@ -18,7 +18,7 @@ public class AssignmentCard extends AppCompatActivity {
 
         setContentView(R.layout.assignment_listview);
 
-        TextView detailsButton =findViewById(R.id.bt_detail);
+        TextView detailsButton = (TextView) findViewById(R.id.bt_detail);
         detailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
