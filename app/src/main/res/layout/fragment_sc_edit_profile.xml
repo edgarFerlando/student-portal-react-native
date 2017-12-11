@@ -1,0 +1,387 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="id.refactory.app.refactoryapps.fragments.Sc_EditProfileFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <android.widget.LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--Cardview for My Portofolio-->
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:padding="10dp"
+            app:cardBackgroundColor="@color/cardview_shadow_end_color"
+            android:background="@color/colorPrimary">
+
+            <android.widget.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:background="#ffffff">
+
+                <TextView
+                    android:id="@+id/tv_sc_Myporto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00BFA5"
+                    android:padding="5dp"
+                    android:text="My Portofolio"
+                    android:textAlignment="center"
+                    android:textColor="@color/cardview_light_background"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <android.widget.LinearLayout
+                    android:id="@+id/sc_detail_sof"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tv_sc_sof"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Stack Overflow"
+                        android:padding="5dp"
+                        android:textSize="24sp"/>
+
+                    <ImageView
+                        android:id="@+id/img_sof_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/sample_sof" />
+
+                    <TextView
+                        android:id="@+id/tv_sc_Linkedin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Linkedin"
+                        android:padding="5dp"
+                        android:textSize="24sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_sc_Linkedin_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No LinkedIn profile provided, please update your profile"
+                        android:padding="5dp"
+                        android:textSize="24sp"/>
+
+                    <ImageView
+                        android:id="@+id/img_linkedin_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/sample_linkedin"/>
+
+                </android.widget.LinearLayout>
+            </android.widget.LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <!--CardView For My Profile-->
+
+        <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:padding="20dp"
+        app:cardBackgroundColor="@color/cardview_shadow_end_color"
+        android:background="@color/colorPrimary">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <android.widget.LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:background="#ffffff">
+
+            <TextView
+                android:id="@+id/tv_sc_myprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0091EA"
+                android:padding="5dp"
+                android:text="My Profile"
+                android:textAlignment="center"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!--<android.support.v7.widget.LinearLayoutCompat-->
+            <android.widget.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:id="@+id/sc_detail_myprofile">
+
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="#6c6c6e"
+                    android:padding="16dp"
+                    android:layout_below="@id/sc_detail_myprofile"/>
+                <!--=========================================-->
+
+            <!--Full name-->
+            <TextView
+                android:id="@+id/tv_sc_name_profile"
+                android:text="Full name:"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/view_line"/>
+
+            <!--Full name ET-->
+            <EditText
+                android:id="@+id/et_sc_name_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_sc_name_profile"
+                android:text="Vito Corleone"
+                />
+
+            <!--Email-->
+            <TextView
+                android:id="@+id/tv_sc_email_profile"
+                android:text="Email :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/et_sc_name_profile"/>
+
+            <!--Email ET-->
+            <EditText
+                android:id="@+id/et_sc_email_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_sc_email_profile"
+                android:text="vito.corleone@refactory.id"
+                />
+
+            <!--Phone-->
+            <TextView
+                android:id="@+id/tv_sc_phone_profile"
+                android:text="Phone :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/et_sc_email_profile"/>
+
+            <!--Phone ET-->
+            <EditText
+                android:id="@+id/et_sc_phone_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_sc_phone_profile"
+                android:text="080989999"
+                />
+
+            <!--Address-->
+            <TextView
+                android:id="@+id/tv_sc_Address_profile"
+                android:text="Address :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/et_sc_phone_profile"/>
+
+            <!--Address ET-->
+            <EditText
+                android:id="@+id/et_sc_Address_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_sc_Address_profile"
+                android:text="Long Beach, New York, U.S."
+                android:minLines="4"
+                />
+
+            <!--City-->
+            <TextView
+                android:id="@+id/tv_sc_city_profile"
+                android:text="City"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/et_sc_Address_profile"/>
+
+            <!--City ET-->
+            <EditText
+                android:id="@+id/et_sc_city_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_sc_city_profile"
+                android:text="New York"
+                />
+
+            <!--LinkedIn-->
+            <TextView
+                android:id="@+id/tv_sc_linkedin_profile"
+                android:text="LinkedIn URL :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/et_sc_city_profile"/>
+
+            <!--LinkedIn ET-->
+            <EditText
+                android:id="@+id/et_sc_linkedin_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_sc_linkedin_profile"
+                android:text="LinkedIn/doncorleone"
+                />
+
+            <!--Github-->
+            <TextView
+                android:id="@+id/tv_sc_github_profile"
+                android:text="Github :"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/et_sc_linkedin_profile"/>
+
+            <!--Github ET-->
+            <EditText
+                android:id="@+id/et_sc_github_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_sc_github_profile"
+                android:text="https://github.com/doncorleone"
+                />
+
+            <!--StackOverflow ID-->
+            <TextView
+                android:id="@+id/tv_sc_sof_profile"
+                android:text="StackOverflow ID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_below="@id/et_sc_github_profile"/>
+
+            <!--StackOverflow ID ET-->
+            <EditText
+                android:id="@+id/et_sc_sof_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tv_sc_sof_profile"
+                android:text="https://stackoverflow.com/users/8670957"
+                />
+
+
+            <!--btn Edit Profile-->
+            <Button
+                android:id="@+id/bt_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/et_sc_sof_profile"
+                android:layout_below="@id/et_sc_sof_profile"
+                android:layout_margin="8dp"
+                android:background="@color/colorPrimary"
+                android:text="Edit Profile"
+                android:textColor="@color/cardview_light_background"
+                android:padding="5dp" />
+
+            <!--</android.support.v7.widget.LinearLayoutCompat>-->
+             </android.widget.LinearLayout>
+        </android.widget.LinearLayout>
+        </RelativeLayout>
+        </ScrollView>
+
+    </android.support.v7.widget.CardView>
+
+        <!--CardView For My Code-->
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:padding="10dp"
+            app:cardBackgroundColor="@color/cardview_shadow_end_color"
+            android:background="@color/colorPrimary">
+
+        <android.widget.LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:background="#ffffff">
+
+        <TextView
+            android:id="@+id/tv_sc_MyCodes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1565C0"
+            android:padding="5dp"
+            android:text="My Codes"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <android.widget.LinearLayout
+            android:id="@+id/sc_detail_gitMycode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tv_sc_gitMycode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="315contributions in the last year"
+                android:padding="5dp"
+                android:textSize="24sp"/>
+
+            <ImageView
+                android:id="@+id/img_gitMycode_detail"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/sample_git" />
+
+            </android.widget.LinearLayout>
+            </android.widget.LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        <!--<include layout="@layout/fragment_code_of_conduct"></include>-->
+
+    </android.widget.LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
