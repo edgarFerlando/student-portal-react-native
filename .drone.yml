@@ -6,8 +6,6 @@ pipeline:
     when:
       event: [ pull_request ]
       branch: develop
-    
- 
   deploy_playstore:
     image: pndxdcode/alpine-android-fastlane:v3
     commands:
