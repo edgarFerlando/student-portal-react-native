@@ -6,6 +6,8 @@ pipeline:
     when:
       event: [ pull_request ]
       branch: develop
+    branches: develop
+    
  
   deploy_playstore:
     image: pndxdcode/alpine-android-fastlane:v3
@@ -14,6 +16,7 @@ pipeline:
     when:
       event: [ pull_request ]
       branch: develop
+    branches: develop
 
   gitea_push:
     image: appleboy/drone-git-push
