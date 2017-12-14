@@ -6,7 +6,6 @@ pipeline:
     when:
       event: [ pull_request ]
       branch: develop
-    branches: develop
     
  
   deploy_playstore:
@@ -16,7 +15,6 @@ pipeline:
     when:
       event: [ pull_request ]
       branch: develop
-    branches: develop
 
   gitea_push:
     image: appleboy/drone-git-push
